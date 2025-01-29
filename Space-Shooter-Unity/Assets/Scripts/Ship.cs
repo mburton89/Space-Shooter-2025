@@ -18,10 +18,15 @@ public class Ship : MonoBehaviour
 
     public float fireRate;
 
-    // Start is called before the first frame update
-    void Start()
+    private ParticleSystem thrustParticles;
+
+    public GameObject explosionPrefab;
+
+    public bool readyToShoot;
+
+    void Awake()
     {
-        
+        thrustParticles = GetComponentInChildren<ParticleSystem>();
     }
 
     private void FixedUpdate()
@@ -38,11 +43,13 @@ public class Ship : MonoBehaviour
         projectile.GetComponent<Rigidbody2D>().AddForce(transform.up * projectileSpeed);
         projectile.GetComponent<Projectile>().GetFired(gameObject);
         Destroy(projectile, 5);
+        StartCoroutine(CoolDown());
     }
 
     public void Thrust()
     {
         rb.AddForce(transform.up * acceleration);
+        thrustParticles.Emit(1);
     }
 
     public void TakeDamage(int damage)
@@ -56,7 +63,15 @@ public class Ship : MonoBehaviour
     }
 
     public void Explode()
-    { 
+    {
+        Instantiate(explosionPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    private IEnumerator CoolDown()
+    {
+        readyToShoot = false;
+        yield return new WaitForSeconds(fireRate);
+        readyToShoot = true;
     }
 }
