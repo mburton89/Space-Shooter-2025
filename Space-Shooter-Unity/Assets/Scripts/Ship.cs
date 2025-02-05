@@ -56,6 +56,11 @@ public class Ship : MonoBehaviour
     {
         currentHealth -= damage;
 
+        if (GetComponent<PlayerShip>())
+        { 
+            HUD.Instance.DisplayHealth(currentHealth , maxHealth);
+        }
+
         if (currentHealth <= 0)
         { 
             Explode();
@@ -64,7 +69,8 @@ public class Ship : MonoBehaviour
 
     public void Explode()
     {
-        Instantiate(explosionPrefab, transform.position, transform.rotation);
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+        Destroy(explosion, 5);
         Destroy(gameObject);
     }
 
