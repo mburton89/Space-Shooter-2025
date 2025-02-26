@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
     public static HUD Instance;
 
     public Image healthBarFill;
+    public TextMeshProUGUI waveText;
+    public TextMeshProUGUI bestText;
 
     private void Awake()
     {
@@ -19,5 +22,15 @@ public class HUD : MonoBehaviour
         float healthAmount = (float)currentHealth / (float)maxHealth;
 
         healthBarFill.fillAmount = healthAmount;
+    }
+
+    public void DisplayWave(int currentWave)
+    {
+        waveText.SetText("Wave " + currentWave);
+    }
+
+    public void DisplayBest(int bestWave)
+    {
+        bestText.SetText("Best " + bestWave);
     }
 }
