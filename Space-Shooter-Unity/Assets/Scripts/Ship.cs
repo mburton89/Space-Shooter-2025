@@ -44,6 +44,7 @@ public class Ship : MonoBehaviour
         projectile.GetComponent<Projectile>().GetFired(gameObject);
         Destroy(projectile, 5);
         StartCoroutine(CoolDown());
+        SoundManager.Instance.PlayPewSound();
     }
 
     public void Thrust()
@@ -81,6 +82,8 @@ public class Ship : MonoBehaviour
         {
             GameManager.Instance.GameOver();
         }
+
+        SoundManager.Instance.PlayExplosionSound();
 
         Destroy(gameObject);
     }
