@@ -6,6 +6,7 @@ public class Ship : MonoBehaviour
 {
     public Rigidbody2D rb;
     public GameObject projectilePrefab;
+    public GameObject minePrefab;
     public Transform projectileSpawnPoint;
 
     public int currentHealth;
@@ -23,6 +24,8 @@ public class Ship : MonoBehaviour
     public GameObject explosionPrefab;
 
     public bool readyToShoot;
+
+    public int minesRemaining;
 
     void Awake()
     {
@@ -93,5 +96,19 @@ public class Ship : MonoBehaviour
         readyToShoot = false;
         yield return new WaitForSeconds(fireRate);
         readyToShoot = true;
+    }
+
+    public void DropMine()
+    {
+        if (minesRemaining > 0)
+        {
+            GameObject mine = Instantiate(minePrefab, transform.position, transform.rotation);
+            mine.GetComponent<Projectile>().GetFired(gameObject);
+            minesRemaining--;
+            if (GetComponent<PlayerShip>())
+            {
+                HUD.Instance.DisplayMineCount(minesRemaining);
+            }
+        }
     }
 }
