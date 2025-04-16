@@ -15,9 +15,8 @@ public class Mine : MonoBehaviour
             collision.GetComponent<Ship>().TakeDamage(damageToGive);
 
             GameObject explosion = Instantiate(mineExplosionPrefab, transform.position, transform.rotation);
-            Destroy(explosion, 5);
-
             Destroy(gameObject);
+            Destroy(explosion, 3);
         }
     }
 
