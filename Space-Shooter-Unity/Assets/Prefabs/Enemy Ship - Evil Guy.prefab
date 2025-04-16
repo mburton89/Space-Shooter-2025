@@ -4871,9 +4871,9 @@ GameObject:
   - component: {fileID: 7603918297251866371}
   - component: {fileID: 3065195632800887391}
   - component: {fileID: 4732332192590273095}
-  - component: {fileID: 435095975347642863}
+  - component: {fileID: 5902722914410433037}
   m_Layer: 0
-  m_Name: Enemy Ship - Shooter
+  m_Name: Enemy Ship - Evil Guy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4889,7 +4889,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1905698773379559240}
@@ -4938,7 +4938,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0.74644005, b: 0.21960783, a: 1}
+  m_Color: {r: 0.38092074, g: 1, b: 0.21960783, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5010,7 +5010,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.32
---- !u!114 &435095975347642863
+--- !u!114 &5902722914410433037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5019,21 +5019,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 8660308642826990816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6438ab025c0174eb8445036177eaec, type: 3}
+  m_Script: {fileID: 11500000, guid: dcb96c08c1a994743b129b61359e74f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3065195632800887391}
-  projectilePrefab: {fileID: 7512327478004615704, guid: 13c53a62a62059d4f9838ba4ba439993, type: 3}
+  projectilePrefab: {fileID: 0}
   minePrefab: {fileID: 0}
-  projectileSpawnPoint: {fileID: 1905698773379559240}
-  currentHealth: 3
-  maxHealth: 4
-  acceleration: 3
-  currentMovementSpeed: 0
-  maxMovementSpeed: 3
-  projectileSpeed: 500
-  fireRate: 1
+  projectileSpawnPoint: {fileID: 0}
+  currentHealth: 0
+  maxHealth: 0
+  acceleration: 5
+  currentMovementSpeed: 8
+  maxMovementSpeed: 8
+  projectileSpeed: 0
+  fireRate: 0
   explosionPrefab: {fileID: 5158381372349960605, guid: 0de221d19e6e79d4f94c017d93cc45c4, type: 3}
-  readyToShoot: 1
+  readyToShoot: 0
   minesRemaining: 0
-  isShooter: 1
+  isShooter: 0
