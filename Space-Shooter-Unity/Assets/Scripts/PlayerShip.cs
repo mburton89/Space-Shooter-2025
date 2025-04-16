@@ -21,10 +21,17 @@ public class PlayerShip : Ship
         {
             FireProjectile();
         }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             DropMine();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DeployMine();
+        }
+
 
         FollowMouse();
     }
