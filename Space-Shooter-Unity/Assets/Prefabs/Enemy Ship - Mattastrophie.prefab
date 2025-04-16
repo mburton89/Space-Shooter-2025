@@ -4873,7 +4873,7 @@ GameObject:
   - component: {fileID: 4732332192590273095}
   - component: {fileID: 435095975347642863}
   m_Layer: 0
-  m_Name: Enemy Ship - Shooter
+  m_Name: Enemy Ship - Mattastrophie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4938,7 +4938,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0.74644005, b: 0.21960783, a: 1}
+  m_Color: {r: 0.7130296, g: 0.32704395, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5026,7 +5026,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7512327478004615704, guid: 13c53a62a62059d4f9838ba4ba439993, type: 3}
   minePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 1905698773379559240}
-  currentHealth: 3
+  currentHealth: 5
   maxHealth: 4
   acceleration: 3
   currentMovementSpeed: 0
