@@ -9,10 +9,26 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Ship>() && collision.gameObject != firingShip)
+        // Ignore collisions with the firing ship
+        if (collision.gameObject == firingShip)
+            return;
+
+        // If it's a ship, deal damage
+        Ship ship = collision.GetComponent<Ship>();
+        if (ship != null)
         {
-            collision.GetComponent<Ship>().TakeDamage(damageToGive);
+            ship.TakeDamage(damageToGive);
             Destroy(gameObject);
+            return;
+        }
+
+        // If it's the train body, flash white
+        TrainBody trainBody = collision.GetComponent<TrainBody>();
+        if (trainBody != null)
+        {
+            trainBody.OnHit();
+            Destroy(gameObject);
+            return;
         }
     }
 
@@ -20,4 +36,6 @@ public class Projectile : MonoBehaviour
     { 
         firingShip = shipThatFired;
     }
+
+
 }
