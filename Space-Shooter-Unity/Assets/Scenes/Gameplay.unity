@@ -6545,6 +6545,8 @@ MonoBehaviour:
   dashCooldown: 1
   readyToDash: 1
   shadowFadeDuration: 0.5
+  shadowCount: 3
+  spawnDelay: 0.1
   fireRate: 0
   readyToShoot: 0
   minesRemaining: 5
