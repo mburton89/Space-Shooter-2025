@@ -5024,6 +5024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3065195632800887391}
   projectilePrefab: {fileID: 7512327478004615704, guid: 13c53a62a62059d4f9838ba4ba439993, type: 3}
+  minePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 1905698773379559240}
   currentHealth: 4
   maxHealth: 4
@@ -5031,7 +5032,11 @@ MonoBehaviour:
   currentMovementSpeed: 0
   maxMovementSpeed: 3
   projectileSpeed: 500
+  dashForce: 0
+  dashCooldown: 0
+  readyToDash: 1
   fireRate: 1
   explosionPrefab: {fileID: 5158381372349960605, guid: 0de221d19e6e79d4f94c017d93cc45c4, type: 3}
   readyToShoot: 1
+  minesRemaining: 0
   isShooter: 1
