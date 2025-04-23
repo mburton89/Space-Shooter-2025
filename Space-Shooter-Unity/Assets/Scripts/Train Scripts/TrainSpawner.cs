@@ -5,17 +5,20 @@ using UnityEngine;
 public class TrainSpawner : MonoBehaviour
 {
     public GameObject trainHeadPrefab;
-    public GameObject trainCarPrefab;
+    //public GameObject trainCarPrefab;
     public GameObject explosionEffect;
     public GameObject playerShip;
 
-    float historySpacing = 0.1f, followSpeed = 40f, segmentSpacing = 9.5f;
+    public List<GameObject> trainCarPrefabs;
+
+    float historySpacing = 0.1f, followSpeed = 40f;
     private int currentHits = 0;
     private bool isDespawning = false;
 
     public int numberOfCars = 50;
     public float headMoveSpeed = 8f;
     public float rotationSpeed = 135f;
+    public float segmentSpacing = 7.5f;
     public int trainHealth = 10;
 
     // manages amount of segments
@@ -32,9 +35,19 @@ public class TrainSpawner : MonoBehaviour
         // spawns train cars (with a totally radical 'for-loop')
         for (int i = 1; i <= numberOfCars; i++)
         {
-            Vector3 spawnPos = transform.position - new Vector3(segmentSpacing * i, 0, 0);
-            GameObject car = Instantiate(trainCarPrefab, spawnPos, Quaternion.identity);
-            segments.Add(car.transform);
+
+            if (i % 5 == 0)
+            {
+                Vector3 spawnPos = transform.position - new Vector3(segmentSpacing * i, 0, 0);
+                GameObject car = Instantiate(trainCarPrefabs[0], spawnPos, Quaternion.identity);
+                segments.Add(car.transform);
+            }
+            else
+            {
+                Vector3 spawnPos = transform.position - new Vector3(segmentSpacing * i, 0, 0);
+                GameObject car = Instantiate(trainCarPrefabs[1], spawnPos, Quaternion.identity);
+                segments.Add(car.transform);
+            }
         }
     }
 
@@ -45,17 +58,7 @@ public class TrainSpawner : MonoBehaviour
         FollowSegments();
     }
 
-    public void RegisterHit()
-    {
-        if (isDespawning) return;
-
-        currentHits++;
-
-        if (currentHits >= trainHealth)
-        {
-            StartCoroutine(DespawnTrain());
-        }
-    }
+    
     private IEnumerator DespawnTrain()
     {
         isDespawning = true;
@@ -67,7 +70,7 @@ public class TrainSpawner : MonoBehaviour
             {
                 Instantiate(explosionEffect, segment.position, Quaternion.identity);
                 Destroy(segment.gameObject);
-                yield return new WaitForSeconds(0.2f); // delay between each despawn
+                yield return new WaitForSeconds(0.1f); // delay between each despawn
             }
         }
 
@@ -135,6 +138,18 @@ public class TrainSpawner : MonoBehaviour
 
         // movement
         head.position += head.right * headMoveSpeed * Time.deltaTime;
+    }
+
+    public void RegisterHit()
+    {
+        if (isDespawning) return;
+
+        currentHits++;
+
+        if (currentHits >= trainHealth)
+        {
+            StartCoroutine(DespawnTrain());
+        }
     }
 
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1903834115453441351
+--- !u!1 &1855519705806499831
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,71 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 400814760818141223}
+  - component: {fileID: 5382623266975498734}
+  - component: {fileID: 6017243798263462922}
+  - component: {fileID: 5719524535973622263}
+  - component: {fileID: 4995110653239335968}
   m_Layer: 0
-  m_Name: LaserSpawnPoint
+  m_Name: Train Car - Enemy Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &400814760818141223
+--- !u!4 &5382623266975498734
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1903834115453441351}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6489468601917795304}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4906016639026090045
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6489468601917795304}
-  - component: {fileID: 7440433342759817689}
-  - component: {fileID: 9190331595057198953}
-  - component: {fileID: 7597126790476742866}
-  m_Layer: 0
-  m_Name: Train Car
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6489468601917795304
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4906016639026090045}
+  m_GameObject: {fileID: 1855519705806499831}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29415604, y: 0.19440764, z: 0}
+  m_LocalPosition: {x: -2.5478709, y: 0.008566201, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 400814760818141223}
+  - {fileID: 5672394588175206840}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7440433342759817689
+--- !u!212 &6017243798263462922
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4906016639026090045}
+  m_GameObject: {fileID: 1855519705806499831}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -108,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.18560763, g: 0.4811321, b: 0, a: 1}
+  m_Color: {r: 0.7830189, g: 0.48106772, b: 0.025854412, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -118,32 +87,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9190331595057198953
+--- !u!114 &5719524535973622263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4906016639026090045}
+  m_GameObject: {fileID: 1855519705806499831}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 414d216505bcd5d41a98edfb9c989548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserSpawnPoint: {fileID: 400814760818141223}
-  enemySpawnPoint: {fileID: 0}
+  laserSpawnPoint: {fileID: 5672394588175206840}
+  enemySpawnPoint: {fileID: 5672394588175206840}
   laserPrefab: {fileID: 1665753336957800613, guid: ba4849cd9297fcd46af88207dd2db216, type: 3}
   trainBabyPrefab: {fileID: 7780929642021465195, guid: 587b74905469fb54bb8b2d9be10525a7, type: 3}
-  isLaserSpawner: 1
-  isEnemySpawner: 0
+  isLaserSpawner: 0
+  isEnemySpawner: 1
   flashDuration: 0.1
---- !u!61 &7597126790476742866
+--- !u!61 &4995110653239335968
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4906016639026090045}
+  m_GameObject: {fileID: 1855519705806499831}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -182,3 +151,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &3845427764805755512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5672394588175206840}
+  m_Layer: 0
+  m_Name: EnemySpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5672394588175206840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845427764805755512}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5382623266975498734}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
