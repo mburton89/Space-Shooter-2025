@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,13 +6,17 @@ public class TrainSpawner : MonoBehaviour
 {
     public GameObject trainHeadPrefab;
     public GameObject trainCarPrefab;
+    public GameObject explosionEffect;
     public GameObject playerShip;
+
+    float historySpacing = 0.1f, followSpeed = 40f, segmentSpacing = 9.5f;
+    private int currentHits = 0;
+    private bool isDespawning = false;
 
     public int numberOfCars = 50;
     public float headMoveSpeed = 8f;
     public float rotationSpeed = 135f;
-
-    float historySpacing = 0.1f, followSpeed = 40f, segmentSpacing = 9.5f;
+    public int trainHealth = 10;
 
     // manages amount of segments
     private List<Transform> segments = new List<Transform>();
@@ -40,13 +45,53 @@ public class TrainSpawner : MonoBehaviour
         FollowSegments();
     }
 
+    public void RegisterHit()
+    {
+        if (isDespawning) return;
+
+        currentHits++;
+
+        if (currentHits >= trainHealth)
+        {
+            StartCoroutine(DespawnTrain());
+        }
+    }
+    private IEnumerator DespawnTrain()
+    {
+        isDespawning = true;
+
+        //start from the head and remove each segment one at a time
+        foreach (Transform segment in segments)
+        {
+            if (segment != null)
+            {
+                Instantiate(explosionEffect, segment.position, Quaternion.identity);
+                Destroy(segment.gameObject);
+                yield return new WaitForSeconds(0.2f); // delay between each despawn
+            }
+        }
+
+        segments.Clear();
+    }
+
     // each car follows one another, being led by the train head
     void FollowSegments()
     {
+        // check
+        if (segments.Count == 0) return;
+
         for (int i = 1; i < segments.Count; i++)
         {
             Transform segment = segments[i];
+
+            // check
+            if (segment == null) continue;
+
             int index = Mathf.Min(Mathf.FloorToInt(i * segmentSpacing / historySpacing), positionHistory.Count - 1);
+            
+            //check
+            if (index < 0 || index >= positionHistory.Count) continue;
+
             Vector3 targetPos = positionHistory[index];
 
             // movement
@@ -66,6 +111,8 @@ public class TrainSpawner : MonoBehaviour
     // records train head position and places its location into list for body to follow
     void RecordHeadPosition()
     {
+        if (segments.Count == 0 || segments[0] == null) return;
+
         positionHistory.Insert(0, segments[0].position);
         int maxHistory = Mathf.CeilToInt((numberOfCars + 1) * segmentSpacing / historySpacing);
         if (positionHistory.Count > maxHistory)
@@ -76,7 +123,7 @@ public class TrainSpawner : MonoBehaviour
     // follows player
     void MoveHeadToPlayer()
     {
-        if (playerShip == null) return;
+        if (playerShip == null || segments.Count == 0 || segments[0] == null) return;
 
         Transform head = segments[0];
         Vector3 direction = (playerShip.transform.position - head.position).normalized;

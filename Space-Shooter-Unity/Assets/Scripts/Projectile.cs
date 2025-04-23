@@ -22,11 +22,17 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        // If it's the train body, flash white
+        // If it's the train body, flash white and register projectile
         TrainBody trainBody = collision.GetComponent<TrainBody>();
         if (trainBody != null)
         {
             trainBody.OnHit();
+            TrainSpawner spawner = FindObjectOfType<TrainSpawner>();
+            if (spawner != null)
+            {
+                spawner.RegisterHit();
+            }
+
             Destroy(gameObject);
             return;
         }
