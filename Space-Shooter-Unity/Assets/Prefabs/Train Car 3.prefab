@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9190331595057198953}
   - component: {fileID: 7597126790476742866}
   m_Layer: 0
-  m_Name: Train Car
+  m_Name: Train Car 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.18560763, g: 0.4811321, b: 0, a: 1}
+  m_Color: {r: 0.5588274, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,8 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashDuration: 0.1
-  projectilePrefab: {fileID: 8519604613528527473, guid: d94bcdae78491f44d81fd2a0851a2902, type: 3}
-  projectileSpawnPoint: {fileID: 6489468601917795304, guid: 360954a7ad31bb442b40d412039ba2dc, type: 3}
 --- !u!61 &7597126790476742866
 BoxCollider2D:
   m_ObjectHideFlags: 0

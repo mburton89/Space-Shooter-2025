@@ -24,7 +24,8 @@ public class Projectile : MonoBehaviour
 
         // If it's the train body, flash white and register projectile
         TrainBody trainBody = collision.GetComponent<TrainBody>();
-        if (trainBody != null)
+        print(gameObject.name);
+        if (trainBody != null && gameObject.name.Contains("Projectile") && !gameObject.name.Contains("Lazer"))
         {
             trainBody.OnHit();
             TrainSpawner spawner = FindObjectOfType<TrainSpawner>();

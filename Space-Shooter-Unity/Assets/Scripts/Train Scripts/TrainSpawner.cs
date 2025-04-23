@@ -6,8 +6,12 @@ public class TrainSpawner : MonoBehaviour
 {
     public GameObject trainHeadPrefab;
     public GameObject trainCarPrefab;
+    public GameObject trainCarPrefab2;
+    public GameObject trainCarPrefab3;
     public GameObject explosionEffect;
     public GameObject playerShip;
+
+    private List<GameObject> trainCars = new List<GameObject>();
 
     float historySpacing = 0.1f, followSpeed = 40f, segmentSpacing = 9.5f;
     private int currentHits = 0;
@@ -25,6 +29,11 @@ public class TrainSpawner : MonoBehaviour
 
     void Start()
     {
+        // Adding car types to train car list //
+        trainCars.Add(trainCarPrefab);
+        trainCars.Add(trainCarPrefab2);
+        trainCars.Add(trainCarPrefab3);
+
         // spawns head of train
         GameObject head = Instantiate(trainHeadPrefab, transform.position, Quaternion.identity);
         segments.Add(head.transform);
@@ -34,7 +43,11 @@ public class TrainSpawner : MonoBehaviour
         {
             Vector3 spawnPos = transform.position - new Vector3(segmentSpacing * i, 0, 0);
             GameObject car = Instantiate(trainCarPrefab, spawnPos, Quaternion.identity);
+            GameObject car2 = Instantiate(trainCarPrefab2, spawnPos, Quaternion.identity);
+            GameObject car3 = Instantiate(trainCarPrefab3, spawnPos, Quaternion.identity);
             segments.Add(car.transform);
+            segments.Add(car2.transform);
+            segments.Add(car3.transform);
         }
     }
 
@@ -66,8 +79,9 @@ public class TrainSpawner : MonoBehaviour
             if (segment != null)
             {
                 Instantiate(explosionEffect, segment.position, Quaternion.identity);
+                print(segment.gameObject);
                 Destroy(segment.gameObject);
-                yield return new WaitForSeconds(0.2f); // delay between each despawn
+                yield return new WaitForSeconds(0.05f); // delay between each despawn
             }
         }
 
