@@ -6189,13 +6189,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trainHeadPrefab: {fileID: 8168051597035623724, guid: cd0b973391a899d4da3dc96f53cbb392, type: 3}
-  trainCarPrefab: {fileID: 4906016639026090045, guid: 3ab47272f5a15fa498ac8340c8b0af99, type: 3}
   explosionEffect: {fileID: 5158381372349960605, guid: 0de221d19e6e79d4f94c017d93cc45c4, type: 3}
   playerShip: {fileID: 1939194610}
+  trainCarPrefabs:
+  - {fileID: 1855519705806499831, guid: 62202ad46607ffc469c18c484d801891, type: 3}
+  - {fileID: 4906016639026090045, guid: 3ab47272f5a15fa498ac8340c8b0af99, type: 3}
   numberOfCars: 50
   headMoveSpeed: 10
   rotationSpeed: 135
-  trainHealth: 10
+  segmentSpacing: 7.5
+  trainHealth: 1
 --- !u!4 &1973980222
 Transform:
   m_ObjectHideFlags: 0
