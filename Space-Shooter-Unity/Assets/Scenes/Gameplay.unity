@@ -5994,7 +5994,7 @@ GameObject:
   - component: {fileID: 1939194615}
   m_Layer: 0
   m_Name: Player Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6147,7 +6147,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7512327478004615704, guid: 13c53a62a62059d4f9838ba4ba439993, type: 3}
   minePrefab: {fileID: 1665753336957800613, guid: ba4849cd9297fcd46af88207dd2db216, type: 3}
   projectileSpawnPoint: {fileID: 1900412987}
-  mineSpawnPoint: {fileID: 340589632}
+  mineSpawnPoint: {fileID: 0}
   currentHealth: 4
   maxHealth: 4
   acceleration: 10
@@ -6404,6 +6404,6 @@ SceneRoots:
   - {fileID: 2024059838}
   - {fileID: 846534561}
   - {fileID: 749193189}
-  - {fileID: 1973980222}
   - {fileID: 1939194613}
   - {fileID: 3277458786437503354}
+  - {fileID: 1973980222}

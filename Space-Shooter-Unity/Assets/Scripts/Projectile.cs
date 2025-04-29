@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject == firingShip)
             return;
 
+        print(collision.gameObject);
         // If it's a ship, deal damage
         Ship ship = collision.GetComponent<Ship>();
         if (ship != null)

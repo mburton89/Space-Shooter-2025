@@ -160,6 +160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8519604613528527473, guid: d94bcdae78491f44d81fd2a0851a2902, type: 3}
   projectileSpawnPoint: {fileID: 6489468601917795304}
+  projectileSpeed: 25
+  target: {fileID: 0}
   delay: 5
   delay2: 10
   projectileAmount: 10
