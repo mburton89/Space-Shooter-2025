@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 430293992}
   - component: {fileID: 430293991}
   m_Layer: 5
-  m_Name: Charachter (3)
+  m_Name: r2d2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -543,7 +543,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -580,7 +580,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6736b9bbec0f7404684e49f9bd7065fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7009227e41e33cb43960f7cf76af015d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 457745533}
   - component: {fileID: 457745532}
   m_Layer: 5
-  m_Name: Charachter (2)
+  m_Name: Horse Witch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -687,7 +687,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6736b9bbec0f7404684e49f9bd7065fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d09af5254eca31841bc098447e57813f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1480,7 +1480,7 @@ GameObject:
   - component: {fileID: 1402753234}
   - component: {fileID: 1402753233}
   m_Layer: 5
-  m_Name: Charachter (4)
+  m_Name: TronHorse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1556,7 +1556,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6736b9bbec0f7404684e49f9bd7065fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 90c7db526d107d843849e366af3242e6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1947,7 +1947,7 @@ GameObject:
   - component: {fileID: 1860698464}
   - component: {fileID: 1860698463}
   m_Layer: 5
-  m_Name: Charachter (5)
+  m_Name: Tuna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2023,7 +2023,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2060,7 +2060,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6736b9bbec0f7404684e49f9bd7065fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85d0392c0604376469260af4e0b26fda, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
