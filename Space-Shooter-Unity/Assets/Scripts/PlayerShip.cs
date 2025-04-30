@@ -13,7 +13,7 @@ public class PlayerShip : Ship
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && readyToDash)
         {
             Thrust();
         }
@@ -24,6 +24,10 @@ public class PlayerShip : Ship
         if (Input.GetKeyDown(KeyCode.Space))
         {
             DropMine();
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Dash();
         }
 
         FollowMouse();
