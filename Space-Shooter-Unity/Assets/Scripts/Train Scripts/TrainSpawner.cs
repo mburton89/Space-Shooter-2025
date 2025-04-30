@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrainSpawner : MonoBehaviour
 {
     public GameObject trainHeadPrefab;
-    //public GameObject trainCarPrefab;
+    public List<GameObject> trainCarPrefabs;
     public GameObject explosionEffect;
     public GameObject playerShip;
 
@@ -28,6 +28,11 @@ public class TrainSpawner : MonoBehaviour
 
     void Start()
     {
+        // Adding car types to train car list //
+        trainCars.Add(trainCarPrefab);
+        trainCars.Add(trainCarPrefab2);
+        trainCars.Add(trainCarPrefab3);
+
         // spawns head of train
         GameObject head = Instantiate(trainHeadPrefab, transform.position, Quaternion.identity);
         segments.Add(head.transform);
@@ -69,8 +74,9 @@ public class TrainSpawner : MonoBehaviour
             if (segment != null)
             {
                 Instantiate(explosionEffect, segment.position, Quaternion.identity);
+                print(segment.gameObject);
                 Destroy(segment.gameObject);
-                yield return new WaitForSeconds(0.1f); // delay between each despawn
+                yield return new WaitForSeconds(0.05f); // delay between each despawn
             }
         }
 

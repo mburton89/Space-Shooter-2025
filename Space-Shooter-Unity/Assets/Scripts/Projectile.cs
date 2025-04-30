@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject == firingShip)
             return;
 
+        print(collision.gameObject);
         // If it's a ship, deal damage
         Ship ship = collision.GetComponent<Ship>();
         if (ship != null)
@@ -24,7 +25,8 @@ public class Projectile : MonoBehaviour
 
         // If it's the train body, flash white and register projectile
         TrainBody trainBody = collision.GetComponent<TrainBody>();
-        if (trainBody != null)
+        print(gameObject.name);
+        if (trainBody != null && gameObject.name.Contains("Projectile") && !gameObject.name.Contains("Lazer"))
         {
             trainBody.OnHit();
             TrainSpawner spawner = FindObjectOfType<TrainSpawner>();
