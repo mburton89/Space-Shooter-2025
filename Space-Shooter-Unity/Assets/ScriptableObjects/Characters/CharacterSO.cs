@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CharacterSO : ScriptableObject
 {
     [Header("Character Information")]
-    public Image portrait;
+    public Sprite portrait;
     public string _name;
     public string bio;
 

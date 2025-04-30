@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class CurrentCharacterInfo : MonoBehaviour
 {
-    public List<CharacterSO> charactersList = new();
+    public List<CharacterSO> charactersList;
     public CharacterSO curChar;
-
+    
     public void SelectCharacter(int i)
     {
-        curChar = i > charactersList.Count ? charactersList[i] : null;
+        curChar = i < charactersList.Count ? charactersList[i] : null;
+        Debug.Log(curChar);
     }
 
     public CharacterSO GetCurChar()
