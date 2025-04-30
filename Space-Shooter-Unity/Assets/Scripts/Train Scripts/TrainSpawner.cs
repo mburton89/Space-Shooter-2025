@@ -34,13 +34,13 @@ public class TrainSpawner : MonoBehaviour
         for (int i = 1; i <= numberOfCars; i++)
         {
 
-            if (i % 10 == 0)
-            {
-                Vector3 spawnPos = transform.position - new Vector3(segmentSpacing * i, 0, 0);
-                GameObject car = Instantiate(trainCarPrefabs[2], spawnPos, Quaternion.identity);
-                segments.Add(car.transform);
-            }
-            else if (i % 4 == 0)
+            //if (i % 10 == 0)
+            //{
+            //    Vector3 spawnPos = transform.position - new Vector3(segmentSpacing * i, 0, 0);
+            //    GameObject car = Instantiate(trainCarPrefabs[2], spawnPos, Quaternion.identity);
+            //    segments.Add(car.transform);
+            //}
+            if (i % 4 == 0)
             {
                 Vector3 spawnPos = transform.position - new Vector3(segmentSpacing * i, 0, 0);
                 GameObject car = Instantiate(trainCarPrefabs[1], spawnPos, Quaternion.identity);
