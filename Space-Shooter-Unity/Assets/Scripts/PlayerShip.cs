@@ -25,6 +25,10 @@ public class PlayerShip : Ship
         {
             DropMine();
         }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            MegaLaser();
+        }
 
         FollowMouse();
     }
