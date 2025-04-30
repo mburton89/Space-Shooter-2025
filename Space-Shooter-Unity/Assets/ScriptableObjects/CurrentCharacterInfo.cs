@@ -7,6 +7,7 @@ public class CurrentCharacterInfo : MonoBehaviour
 {
     public List<CharacterSO> charactersList;
     public CharacterSO curChar;
+    public SelectedChar selectedChar;
     
     public void SelectCharacter(int i)
     {
@@ -17,5 +18,10 @@ public class CurrentCharacterInfo : MonoBehaviour
     public CharacterSO GetCurChar()
     {
         return curChar;
+    }
+
+    public void SelectCharacter()
+    {
+        selectedChar.SetCharacter(curChar);
     }
 }
