@@ -16,6 +16,8 @@ public class PowerUp : MonoBehaviour
     public GameObject revertSpeedPrefab;
     private PlayerShip player;
 
+    //public List<GameObject> enemyShipPrefabs;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<PlayerShip>())
@@ -25,12 +27,6 @@ public class PowerUp : MonoBehaviour
             Destroy(gameObject); 
         }
     }
-
-    //public void SpawnPowerUp()
-    //{
-    //  int index = Random.Range(0, powerUpPrefabs.Count);
-    //  Instantiate(powerUpPrefabs[index], spawnPoint.position, transform.rotation, null);
-    //}
 
     public void PowerUpEffect()
     {
@@ -77,7 +73,6 @@ public class PowerUp : MonoBehaviour
         Destroy(gameObject);
     }
 
-
     void Start()
     {
       if (revertSpeed)
@@ -91,4 +86,13 @@ public class PowerUp : MonoBehaviour
     {
       
     }
+
+    
+    //public void SpawnPowerUp()
+    //{
+    //  int index = Random.Range(0, powerUpPrefabs.Count);
+    //Instantiate(powerUpPrefabs[index], spawnPoint.position, transform.rotation, null);
+    //}
+
+    
 }

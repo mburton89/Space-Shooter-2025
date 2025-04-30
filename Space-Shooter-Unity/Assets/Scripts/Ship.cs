@@ -27,6 +27,8 @@ public class Ship : MonoBehaviour
 
     public int minesRemaining;
 
+    public List<GameObject> powerUpPrefabs;
+
     void Awake()
     {
         thrustParticles = GetComponentInChildren<ParticleSystem>();
@@ -79,6 +81,7 @@ public class Ship : MonoBehaviour
         if (GetComponent<EnemyShip>())
         { 
             EnemyShipSpawner.Instance.CountEnemyShips();
+            SpawnPowerUp();
         }
 
         if (GetComponent<PlayerShip>())
@@ -97,6 +100,13 @@ public class Ship : MonoBehaviour
         yield return new WaitForSeconds(fireRate);
         readyToShoot = true;
     }
+
+    public void SpawnPowerUp()
+    {
+      int index = Random.Range(0, powerUpPrefabs.Count);
+    Instantiate(powerUpPrefabs[index],transform.position, transform.rotation, null);
+    }
+
 
     public void DropMine()
     {
