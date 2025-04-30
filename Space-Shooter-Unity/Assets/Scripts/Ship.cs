@@ -20,11 +20,11 @@ public class Ship : MonoBehaviour
     public float acceleration;
     public float currentMovementSpeed;
     public float maxMovementSpeed;
-    public float projectileSpeed;
     private bool canMove = true;
 
     [Header(" ====== Attack Settings ===== ")]
     public float fireRate;
+    public float projectileSpeed;
     public bool readyToShoot;
     public int minesRemaining;
 
@@ -124,12 +124,16 @@ public class Ship : MonoBehaviour
 
     public void MegaLaser()
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Vector2.zero;
-        GameObject laser = Instantiate(megaLaserPrefab, megaLaserSpawnPoint.position, megaLaserSpawnPoint.rotation, megaLaserSpawnPoint);
+        if (megaLaserReady)
+        {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            rb.velocity = Vector2.zero;
+            GameObject laser = Instantiate(megaLaserPrefab, megaLaserSpawnPoint.position, megaLaserSpawnPoint.rotation, megaLaserSpawnPoint);
 
-        StartCoroutine(MegaLaserCooldown());
-        Destroy(laser, megaLaserDuration);
+            StartCoroutine(MegaLaserCooldown());
+            StartCoroutine(MovementCooldown());
+            Destroy(laser, megaLaserDuration);
+        }
     }
 
     private IEnumerator MegaLaserCooldown()
@@ -139,5 +143,12 @@ public class Ship : MonoBehaviour
         yield return new WaitForSeconds(megaLaserCooldown);
         megaLaserReady = true;
         HUD.Instance.DisplayMLaser(megaLaserReady);
+    }
+
+    private IEnumerator MovementCooldown()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(megaLaserDuration);
+        canMove = true;
     }
 }
