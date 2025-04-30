@@ -4,6 +4,13 @@ using UnityEngine;
 using DG.Tweening;
 public class MainMenuSequencer : MonoBehaviour
 {
+    //Branches to merge
+    //Dash
+    //Mega Laser
+    //Nathan New Enemy Train
+    //Make sure powerups drop
+    //Character select
+    
     public Transform leftHorse;
     public Transform rightHorse;
     public Transform title;
