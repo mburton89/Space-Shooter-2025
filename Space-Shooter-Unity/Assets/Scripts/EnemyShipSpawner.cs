@@ -8,6 +8,7 @@ public class EnemyShipSpawner : MonoBehaviour
 
     int baseNumberOfShips;
     int currentNumberOfShips;
+    int NumberOfEnemyShips;
     int currentWave = 1;
 
     public Transform spawnPoint;
@@ -23,6 +24,7 @@ public class EnemyShipSpawner : MonoBehaviour
 
     void Start()
     {
+        InvokeRepeating(nameof(CheckForNoEnemy), 0.5f, 2f);
         baseNumberOfShips = FindObjectsOfType<EnemyShip>().Length;
         currentNumberOfShips = baseNumberOfShips;
 
@@ -50,6 +52,25 @@ public class EnemyShipSpawner : MonoBehaviour
         print("Number of Enemy Ships: " + currentNumberOfShips);
 
         if (currentNumberOfShips == 1)
+        {
+            currentWave++;
+            HUD.Instance.DisplayWave(currentWave);
+            SpawnWaveOfEnemies();
+
+            if (currentWave > PlayerPrefs.GetInt("HighestWave"))
+            {
+                // YAAAYY WE SET A NEW HIGH SCORE
+                PlayerPrefs.SetInt("HighestWave", currentWave);
+                HUD.Instance.DisplayBest(PlayerPrefs.GetInt("HighestWave"));
+            }
+        }
+    }
+
+    private void CheckForNoEnemy()
+    {
+        NumberOfEnemyShips = FindObjectsOfType<EnemyShip>().Length;
+
+        if (NumberOfEnemyShips == 0)
         {
             currentWave++;
             HUD.Instance.DisplayWave(currentWave);

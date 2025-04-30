@@ -6577,6 +6577,7 @@ MonoBehaviour:
   minesRemaining: 5
   megaLaserReady: 1
   megaLaserDuration: 1
+  megaLaserCooldown: 4
   megaLaserPrefab: {fileID: 7512327478004615704, guid: 222ae6a7148e0ea48842d40410d2fb4e, type: 3}
   megaLaserSpawnPoint: {fileID: 709501398}
 --- !u!1 &2024059834
