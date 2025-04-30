@@ -9,8 +9,6 @@ public class TrainSpawner : MonoBehaviour
     public GameObject explosionEffect;
     public GameObject playerShip;
 
-    public List<GameObject> trainCarPrefabs;
-
     float historySpacing = 0.1f, followSpeed = 40f;
     private int currentHits = 0;
     private bool isDespawning = false;
@@ -28,11 +26,6 @@ public class TrainSpawner : MonoBehaviour
 
     void Start()
     {
-        // Adding car types to train car list //
-        trainCars.Add(trainCarPrefab);
-        trainCars.Add(trainCarPrefab2);
-        trainCars.Add(trainCarPrefab3);
-
         // spawns head of train
         GameObject head = Instantiate(trainHeadPrefab, transform.position, Quaternion.identity);
         segments.Add(head.transform);
@@ -41,16 +34,22 @@ public class TrainSpawner : MonoBehaviour
         for (int i = 1; i <= numberOfCars; i++)
         {
 
-            if (i % 5 == 0)
+            if (i % 10 == 0)
             {
                 Vector3 spawnPos = transform.position - new Vector3(segmentSpacing * i, 0, 0);
-                GameObject car = Instantiate(trainCarPrefabs[0], spawnPos, Quaternion.identity);
+                GameObject car = Instantiate(trainCarPrefabs[2], spawnPos, Quaternion.identity);
+                segments.Add(car.transform);
+            }
+            else if (i % 4 == 0)
+            {
+                Vector3 spawnPos = transform.position - new Vector3(segmentSpacing * i, 0, 0);
+                GameObject car = Instantiate(trainCarPrefabs[1], spawnPos, Quaternion.identity);
                 segments.Add(car.transform);
             }
             else
             {
                 Vector3 spawnPos = transform.position - new Vector3(segmentSpacing * i, 0, 0);
-                GameObject car = Instantiate(trainCarPrefabs[1], spawnPos, Quaternion.identity);
+                GameObject car = Instantiate(trainCarPrefabs[0], spawnPos, Quaternion.identity);
                 segments.Add(car.transform);
             }
         }
@@ -76,7 +75,7 @@ public class TrainSpawner : MonoBehaviour
                 Instantiate(explosionEffect, segment.position, Quaternion.identity);
                 print(segment.gameObject);
                 Destroy(segment.gameObject);
-                yield return new WaitForSeconds(0.05f); // delay between each despawn
+                yield return new WaitForSeconds(0.1f); // delay between each despawn
             }
         }
 
