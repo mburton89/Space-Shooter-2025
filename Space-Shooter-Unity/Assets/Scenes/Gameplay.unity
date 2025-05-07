@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df6baa4488e8a94a9914c4849aa05ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1528520817}
 --- !u!1 &749193188
 GameObject:
   m_ObjectHideFlags: 0
@@ -5948,6 +5948,7 @@ MonoBehaviour:
   minePrefab: {fileID: 7512327478004615704, guid: f4fe444ef806e784fab2399f5c461384, type: 3}
   projectileSpawnPoint: {fileID: 1610922988}
   explosionPrefab: {fileID: 5158381372349960605, guid: 0de221d19e6e79d4f94c017d93cc45c4, type: 3}
+  powerUpPrefabs: []
   currentHealth: 4
   maxHealth: 4
   acceleration: 10

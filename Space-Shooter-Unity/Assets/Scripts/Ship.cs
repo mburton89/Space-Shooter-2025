@@ -4,30 +4,37 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
+    [Header(" ===== GameObjects/Prefabs ===== ")]
     public Rigidbody2D rb;
     public GameObject projectilePrefab;
     public GameObject minePrefab;
     public Transform projectileSpawnPoint;
+    public GameObject explosionPrefab;
+    public List<GameObject> powerUpPrefabs;
+    private ParticleSystem thrustParticles;
 
+    [Header(" ===== Health Settings ===== ")]
     public int currentHealth;
     public int maxHealth;
 
+    [Header(" ===== Movement Settings ===== ")]
     public float acceleration;
     public float currentMovementSpeed;
     public float maxMovementSpeed;
-    public float projectileSpeed;
+    private bool canMove = true;
 
+    [Header(" ====== Attack Settings ===== ")]
     public float fireRate;
-
-    private ParticleSystem thrustParticles;
-
-    public GameObject explosionPrefab;
-
+    public float projectileSpeed;
     public bool readyToShoot;
-
     public int minesRemaining;
 
-    public List<GameObject> powerUpPrefabs;
+    [Header("- - - MegaLaser Settigns - - - ")]
+    public bool megaLaserReady;
+    public float megaLaserDuration;
+    public float megaLaserCooldown;
+    public GameObject megaLaserPrefab;
+    public Transform megaLaserSpawnPoint;
 
     void Awake()
     {
@@ -37,7 +44,7 @@ public class Ship : MonoBehaviour
     private void FixedUpdate()
     {
         if (rb.velocity.magnitude > maxMovementSpeed)
-        { 
+        {
             rb.velocity = rb.velocity.normalized * maxMovementSpeed;
         }
     }
@@ -54,6 +61,8 @@ public class Ship : MonoBehaviour
 
     public void Thrust()
     {
+        if (!canMove) return;
+
         rb.AddForce(transform.up * acceleration);
         thrustParticles.Emit(1);
     }
@@ -63,12 +72,12 @@ public class Ship : MonoBehaviour
         currentHealth -= damage;
 
         if (GetComponent<PlayerShip>())
-        { 
-            HUD.Instance.DisplayHealth(currentHealth , maxHealth);
+        {
+            HUD.Instance.DisplayHealth(currentHealth, maxHealth);
         }
 
         if (currentHealth <= 0)
-        { 
+        {
             Explode();
         }
     }
@@ -77,9 +86,9 @@ public class Ship : MonoBehaviour
     {
         GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
         Destroy(explosion, 5);
-        
+
         if (GetComponent<EnemyShip>())
-        { 
+        {
             EnemyShipSpawner.Instance.CountEnemyShips();
             SpawnPowerUp();
         }
@@ -101,13 +110,6 @@ public class Ship : MonoBehaviour
         readyToShoot = true;
     }
 
-    public void SpawnPowerUp()
-    {
-      int index = Random.Range(0, powerUpPrefabs.Count);
-    Instantiate(powerUpPrefabs[index],transform.position, transform.rotation, null);
-    }
-
-
     public void DropMine()
     {
         if (minesRemaining > 0)
@@ -121,4 +123,48 @@ public class Ship : MonoBehaviour
             }
         }
     }
+
+    public void MegaLaser()
+    {
+        if (megaLaserReady)
+        {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            rb.velocity = Vector2.zero;
+            GameObject laser = Instantiate(megaLaserPrefab, megaLaserSpawnPoint.position, megaLaserSpawnPoint.rotation, megaLaserSpawnPoint);
+
+            //Use these two for a powerup recharging laser
+            megaLaserReady = false;
+            HUD.Instance.DisplayMLaser(megaLaserReady);
+
+            //StartCoroutine(MegaLaserCooldown());  //Use for a cooldown laser
+
+            StartCoroutine(MovementCooldown());
+            Destroy(laser, megaLaserDuration);
+        }
+    }
+
+    /*  //Use for a cooldown laser
+    private IEnumerator MegaLaserCooldown()
+    {
+        megaLaserReady = false;
+        HUD.Instance.DisplayMLaser(megaLaserReady);
+        yield return new WaitForSeconds(megaLaserCooldown);
+        megaLaserReady = true;
+        HUD.Instance.DisplayMLaser(megaLaserReady);
+    }
+    */
+
+    private IEnumerator MovementCooldown()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(megaLaserDuration);
+        canMove = true;
+    }
+
+    public void SpawnPowerUp()
+    {
+        int index = Random.Range(0, powerUpPrefabs.Count);
+        Instantiate(powerUpPrefabs[index], transform.position, transform.rotation, null);
+    }
+
 }
