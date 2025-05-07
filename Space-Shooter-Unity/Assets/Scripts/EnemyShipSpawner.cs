@@ -32,11 +32,12 @@ public class EnemyShipSpawner : MonoBehaviour
         HUD.Instance.DisplayBest(PlayerPrefs.GetInt("HighestWave"));
     }
 
+    // ITS BROKEN AGAIN >:(((((
     public void SpawnWaveOfEnemies()
     {
         int numberOfEnemiesToSpawn = baseNumberOfShips + currentWave - 1;
 
-        if (currentWave % 10 == 0)
+        if (currentWave % 2 == 0)
         {
             int index = Random.Range(0, bossPrefabs.Count);
             float zRotation = Random.Range(0, 360);
