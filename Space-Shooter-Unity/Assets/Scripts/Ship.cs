@@ -6,15 +6,11 @@ public class Ship : MonoBehaviour
 {
     [Header(" ===== General ===== ")]
     public Rigidbody2D rb;
-    public GameObject projectilePrefab;
-    public GameObject minePrefab;
-    public Transform projectileSpawnPoint;
     public GameObject explosionPrefab;
     public List<GameObject> powerUpPrefabs;
     public float invincTime;
     private ParticleSystem thrustParticles;
     private Collider2D col;
-    public Transform mineSpawnPoint;
 
     [Header(" ===== Health Settings ===== ")]
     public int currentHealth;
@@ -27,6 +23,8 @@ public class Ship : MonoBehaviour
     private bool canMove = true;
 
     [Header(" ====== Attack Settings ===== ")]
+    public GameObject projectilePrefab;
+    public Transform projectileSpawnPoint;
     public float fireRate;
     public float projectileSpeed;
     public bool readyToShoot;
@@ -35,6 +33,7 @@ public class Ship : MonoBehaviour
     [Header("- - - Mines - - -")]
     public int minesRemaining;
     public float deployRate;
+    public Transform mineSpawnPoint;
     public GameObject minePrefab;
 
     [Header("- - - MegaLaser Settigns - - - ")]
