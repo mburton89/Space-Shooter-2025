@@ -764,7 +764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarFill: {fileID: 1420859331}
   megaLaserBoxFill: {fileID: 1077750429}
-  dashBoxFill: {fileID: 0}
+  dashBoxFill: {fileID: 1533668761}
   waveText: {fileID: 1789783378}
   bestText: {fileID: 1630645634}
   minesText: {fileID: 1685296868}
@@ -6193,7 +6193,7 @@ GameObject:
   - component: {fileID: 1533668762}
   - component: {fileID: 1533668761}
   m_Layer: 5
-  m_Name: Image - MegaLaser Fill
+  m_Name: Image - Dash Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

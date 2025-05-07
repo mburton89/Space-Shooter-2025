@@ -204,6 +204,13 @@ public class Ship : MonoBehaviour
         shadow.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
     }
     */
+    private IEnumerator DashCooldown()
+    {
+        yield return new WaitForSeconds(dashCooldown);
+        readyToDash = true;
+        HUD.Instance.DisplayDash(readyToDash);
+    }
+
     private IEnumerator SpawnDashShadows(Vector2 direction)
     {
         for (int i = 0; i < shadowCount; i++)
@@ -240,12 +247,5 @@ public class Ship : MonoBehaviour
         }
 
         Destroy(shadow);
-    }
-
-    private IEnumerator DashCooldown()
-    {
-        yield return new WaitForSeconds(dashCooldown);
-        readyToDash = true;
-        HUD.Instance.DisplayDash(readyToDash);
     }
 }
