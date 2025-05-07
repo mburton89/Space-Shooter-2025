@@ -102,6 +102,7 @@ public class Ship : MonoBehaviour
         if (GetComponent<EnemyShip>())
         {
             EnemyShipSpawner.Instance.CountEnemyShips();
+            SpawnPowerUp();
         }
 
         if (GetComponent<PlayerShip>())

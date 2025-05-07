@@ -204,7 +204,7 @@ MonoBehaviour:
   enemyShipPrefabs:
   - {fileID: 4792060232027111551, guid: e4a19d066244892478a3f99c2124ff43, type: 3}
   - {fileID: 8660308642826990816, guid: a63414b2e68305b45a326eb8bcd4298a, type: 3}
-  playerShip: {fileID: 0}
+  playerShip: {fileID: 1528520812}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
