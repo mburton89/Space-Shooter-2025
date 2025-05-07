@@ -8,7 +8,6 @@ public class Ship : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject minePrefab;
     public Transform projectileSpawnPoint;
-    public Transform mineSpawnPoint;
 
     public int currentHealth;
     public int maxHealth;
@@ -19,14 +18,16 @@ public class Ship : MonoBehaviour
     public float projectileSpeed;
 
     public float fireRate;
-    public float deployRate;
 
     private ParticleSystem thrustParticles;
 
     public GameObject explosionPrefab;
 
     public bool readyToShoot;
-    public bool readyToDeploy;
+
+    public int minesRemaining;
+
+    public List<GameObject> powerUpPrefabs;
 
     void Awake()
     {
@@ -47,16 +48,9 @@ public class Ship : MonoBehaviour
         projectile.GetComponent<Rigidbody2D>().AddForce(transform.up * projectileSpeed);
         projectile.GetComponent<Projectile>().GetFired(gameObject);
         Destroy(projectile, 5);
-        StartCoroutine(CoolDownBullet());
-        SoundManager.Instance.PlayPewSound();
-    }
-
-    public void DeployMine()
-    {
-        GameObject mine = Instantiate(minePrefab, mineSpawnPoint.position, transform.rotation);
-        mine.GetComponent<Mine>().GetDeployed(gameObject);
-        Destroy(mine, 10);
-        StartCoroutine(CoolDownMine());
+        StartCoroutine(CoolDown());
+        //SoundManager.Instance.PlayPewSound();
+        SoundsManager.Instance.PlayVariedSFX(SoundsManager.Instance.source21);
     }
 
     public void Thrust()
@@ -78,38 +72,57 @@ public class Ship : MonoBehaviour
         { 
             Explode();
         }
+        SoundsManager.Instance.PlaySFX(SoundsManager.Instance.source3);
+        SoundsManager.Instance.PlaySFX(SoundsManager.Instance.source4);
     }
 
     public void Explode()
     {
         GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
         Destroy(explosion, 5);
-
+        
         if (GetComponent<EnemyShip>())
         { 
             EnemyShipSpawner.Instance.CountEnemyShips();
+            //SpawnPowerUp();
         }
 
         if (GetComponent<PlayerShip>())
         {
+            SoundsManager.Instance.PlaySFX(SoundsManager.Instance.source10);
             GameManager.Instance.GameOver();
         }
 
-        SoundManager.Instance.PlayExplosionSound();
-
+        //SoundManager.Instance.PlayExplosionSound();
+        SoundsManager.Instance.PlaySFX(SoundsManager.Instance.source7);
         Destroy(gameObject);
     }
 
-    private IEnumerator CoolDownBullet()
+    private IEnumerator CoolDown()
     {
         readyToShoot = false;
         yield return new WaitForSeconds(fireRate);
         readyToShoot = true;
     }
-    private IEnumerator CoolDownMine()
+
+    //public void SpawnPowerUp()
+    //{
+    //  int index = Random.Range(0, powerUpPrefabs.Count);
+    //Instantiate(powerUpPrefabs[index],transform.position, transform.rotation, null);
+    //}
+
+
+    public void DropMine()
     {
-        readyToDeploy = false;
-        yield return new WaitForSeconds(deployRate);
-        readyToDeploy = true;
+        if (minesRemaining > 0)
+        {
+            GameObject mine = Instantiate(minePrefab, transform.position, transform.rotation);
+            mine.GetComponent<Projectile>().GetFired(gameObject);
+            minesRemaining--;
+            if (GetComponent<PlayerShip>())
+            {
+                HUD.Instance.DisplayMineCount(minesRemaining);
+            }
+        }
     }
 }

@@ -36,10 +36,10 @@ public class EnemyShip : Ship
             FireProjectile();
         }
 
-        if (isMiner && target != null && readyToDeploy)
-        {
-            DeployMine();
-        }
+        //if (isMiner && target != null && readyToDeploy)
+        //{
+        //    DeployMine();
+        //}
     }
 
     void FollowTarget()
