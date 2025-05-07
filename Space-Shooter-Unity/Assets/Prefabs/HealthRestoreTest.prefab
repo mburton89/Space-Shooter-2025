@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.94806576, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6a35ad27a4ae4c24589f897aeee97bb6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -161,7 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc7a7b5487e17e149933a772c7aa2123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
   restoreHealth: 1
   restoreHealthAmount: 1
   increaseSpeed: 0
-  spawnPoint: {fileID: 0}
+  revertSpeed: 0
+  powerUpTimer: 0
+  revertSpeedPrefab: {fileID: 0}
+  megaLaserRecharge: 0
