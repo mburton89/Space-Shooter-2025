@@ -4,36 +4,29 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-    [Header(" ===== GameObjects/Prefabs ===== ")]
     public Rigidbody2D rb;
     public GameObject projectilePrefab;
     public GameObject minePrefab;
     public Transform projectileSpawnPoint;
-    public GameObject explosionPrefab;
-    private ParticleSystem thrustParticles;
+    public Transform mineSpawnPoint;
 
-    [Header(" ===== Health Settings ===== ")]
     public int currentHealth;
     public int maxHealth;
 
-    [Header(" ===== Movement Settings ===== ")]
     public float acceleration;
     public float currentMovementSpeed;
     public float maxMovementSpeed;
-    private bool canMove = true;
-
-    [Header(" ====== Attack Settings ===== ")]
-    public float fireRate;
     public float projectileSpeed;
-    public bool readyToShoot;
-    public int minesRemaining;
 
-    [Header("- - - MegaLaser Settigns - - - ")]
-    public bool megaLaserReady;
-    public float megaLaserDuration;
-    public float megaLaserCooldown;
-    public GameObject megaLaserPrefab;
-    public Transform megaLaserSpawnPoint;
+    public float fireRate;
+    public float deployRate;
+
+    private ParticleSystem thrustParticles;
+
+    public GameObject explosionPrefab;
+
+    public bool readyToShoot;
+    public bool readyToDeploy;
 
     void Awake()
     {
@@ -42,8 +35,8 @@ public class Ship : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rb.velocity.magnitude > maxMovementSpeed )
-        {
+        if (rb.velocity.magnitude > maxMovementSpeed)
+        { 
             rb.velocity = rb.velocity.normalized * maxMovementSpeed;
         }
     }
@@ -54,14 +47,20 @@ public class Ship : MonoBehaviour
         projectile.GetComponent<Rigidbody2D>().AddForce(transform.up * projectileSpeed);
         projectile.GetComponent<Projectile>().GetFired(gameObject);
         Destroy(projectile, 5);
-        StartCoroutine(CoolDown());
+        StartCoroutine(CoolDownBullet());
         SoundManager.Instance.PlayPewSound();
+    }
+
+    public void DeployMine()
+    {
+        GameObject mine = Instantiate(minePrefab, mineSpawnPoint.position, transform.rotation);
+        mine.GetComponent<Mine>().GetDeployed(gameObject);
+        Destroy(mine, 10);
+        StartCoroutine(CoolDownMine());
     }
 
     public void Thrust()
     {
-        if (!canMove) return;
-
         rb.AddForce(transform.up * acceleration);
         thrustParticles.Emit(1);
     }
@@ -71,12 +70,12 @@ public class Ship : MonoBehaviour
         currentHealth -= damage;
 
         if (GetComponent<PlayerShip>())
-        {
-            HUD.Instance.DisplayHealth(currentHealth, maxHealth);
+        { 
+            HUD.Instance.DisplayHealth(currentHealth , maxHealth);
         }
 
         if (currentHealth <= 0)
-        {
+        { 
             Explode();
         }
     }
@@ -87,7 +86,7 @@ public class Ship : MonoBehaviour
         Destroy(explosion, 5);
 
         if (GetComponent<EnemyShip>())
-        {
+        { 
             EnemyShipSpawner.Instance.CountEnemyShips();
         }
 
@@ -101,54 +100,16 @@ public class Ship : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator CoolDown()
+    private IEnumerator CoolDownBullet()
     {
         readyToShoot = false;
         yield return new WaitForSeconds(fireRate);
         readyToShoot = true;
     }
-
-    public void DropMine()
+    private IEnumerator CoolDownMine()
     {
-        if (minesRemaining > 0)
-        {
-            GameObject mine = Instantiate(minePrefab, transform.position, transform.rotation);
-            mine.GetComponent<Projectile>().GetFired(gameObject);
-            minesRemaining--;
-            if (GetComponent<PlayerShip>())
-            {
-                HUD.Instance.DisplayMineCount(minesRemaining);
-            }
-        }
-    }
-
-    public void MegaLaser()
-    {
-        if (megaLaserReady)
-        {
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            rb.velocity = Vector2.zero;
-            GameObject laser = Instantiate(megaLaserPrefab, megaLaserSpawnPoint.position, megaLaserSpawnPoint.rotation, megaLaserSpawnPoint);
-
-            StartCoroutine(MegaLaserCooldown());
-            StartCoroutine(MovementCooldown());
-            Destroy(laser, megaLaserDuration);
-        }
-    }
-
-    private IEnumerator MegaLaserCooldown()
-    {
-        megaLaserReady = false;
-        HUD.Instance.DisplayMLaser(megaLaserReady);
-        yield return new WaitForSeconds(megaLaserCooldown);
-        megaLaserReady = true;
-        HUD.Instance.DisplayMLaser(megaLaserReady);
-    }
-
-    private IEnumerator MovementCooldown()
-    {
-        canMove = false;
-        yield return new WaitForSeconds(megaLaserDuration);
-        canMove = true;
+        readyToDeploy = false;
+        yield return new WaitForSeconds(deployRate);
+        readyToDeploy = true;
     }
 }
