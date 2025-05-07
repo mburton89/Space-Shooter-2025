@@ -5029,8 +5029,9 @@ MonoBehaviour:
   - {fileID: 7512327478004615704, guid: e60f06f270a785746a6fec89af8b79b4, type: 3}
   - {fileID: 7512327478004615704, guid: 20de7da50a7f4b343afe0574e81ddd8b, type: 3}
   invincTime: 0
-  currentHealth: 1
-  maxHealth: 1
+  dashInvincTime: 0
+  currentHealth: 5
+  maxHealth: 5
   acceleration: 6
   currentMovementSpeed: 0
   maxMovementSpeed: 6

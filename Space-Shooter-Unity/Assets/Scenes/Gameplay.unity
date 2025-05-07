@@ -727,8 +727,8 @@ MonoBehaviour:
   enemyShipPrefabs:
   - {fileID: 4792060232027111551, guid: e4a19d066244892478a3f99c2124ff43, type: 3}
   - {fileID: 8660308642826990816, guid: a63414b2e68305b45a326eb8bcd4298a, type: 3}
-  - {fileID: 9012869455404979708, guid: 418ada1207125a241be2456564d9159f, type: 3}
-  bossPrefabs: []
+  bossPrefabs:
+  - {fileID: 6605558862258837749, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
   playerShip: {fileID: 0}
 --- !u!1 &410824307
 GameObject:
@@ -7484,9 +7484,10 @@ MonoBehaviour:
   rb: {fileID: 1939194611}
   explosionPrefab: {fileID: 5158381372349960605, guid: 0de221d19e6e79d4f94c017d93cc45c4, type: 3}
   powerUpPrefabs: []
-  invincTime: 1
-  currentHealth: 4
-  maxHealth: 4
+  invincTime: 0.25
+  dashInvincTime: 1
+  currentHealth: 10
+  maxHealth: 10
   acceleration: 10
   currentMovementSpeed: 0
   maxMovementSpeed: 10
