@@ -18,6 +18,10 @@ public class Ship : MonoBehaviour
     public int maxHealth;
 
     [Header(" ===== Movement Settings ===== ")]
+    public GameObject dashShadowPrefab;
+    private ParticleSystem thrustParticles;
+    public GameObject explosionPrefab;
+
     public float acceleration;
     public float currentMovementSpeed;
     public float maxMovementSpeed;
@@ -36,6 +40,14 @@ public class Ship : MonoBehaviour
     public GameObject megaLaserPrefab;
     public Transform megaLaserSpawnPoint;
 
+    [Header("Dash Settings")]
+    public float dashForce;
+    public float dashCooldown;
+    public bool readyToDash;
+    public float shadowFadeDuration = 0.5f;
+    public int shadowCount = 3;
+    public float spawnDelay = 0.05f;
+
     void Awake()
     {
         thrustParticles = GetComponentInChildren<ParticleSystem>();
@@ -43,8 +55,8 @@ public class Ship : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rb.velocity.magnitude > maxMovementSpeed)
-        {
+        if ((rb.velocity.magnitude > maxMovementSpeed) && (readyToDash))
+        { 
             rb.velocity = rb.velocity.normalized * maxMovementSpeed;
         }
     }
@@ -167,4 +179,74 @@ public class Ship : MonoBehaviour
         Instantiate(powerUpPrefabs[index], transform.position, transform.rotation, null);
     }
 
+    public void Dash()
+    {
+        if (readyToDash)
+        {
+            Vector3 mouseScreenPos = Input.mousePosition;
+            mouseScreenPos.z = Mathf.Abs(Camera.main.transform.position.z);
+            Vector3 mouseWorldPos3D = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+            Vector2 direction = (new Vector2(mouseWorldPos3D.x, mouseWorldPos3D.y) - rb.position).normalized;
+
+            readyToDash = false;
+            HUD.Instance.DisplayDash(readyToDash);
+
+            rb.velocity = direction * dashForce;
+
+            StartCoroutine(DashCooldown());
+            StartCoroutine(SpawnDashShadows(direction));
+        }
+    }
+    /*
+    private void RotateShadow(Vector2 direction)
+    {
+        float angle = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+
+        shadow.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+    }
+    */
+    private IEnumerator SpawnDashShadows(Vector2 direction)
+    {
+        for (int i = 0; i < shadowCount; i++)
+        {
+            yield return new WaitForSeconds(spawnDelay);
+
+            GameObject shadow = Instantiate(dashShadowPrefab, transform.position, Quaternion.identity);
+            //RotateShadow(direction);
+            float angle = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+            shadow.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
+            StartCoroutine(FadeShadow(shadow));
+        }
+    }
+
+    private IEnumerator FadeShadow(GameObject shadow)
+    {
+        SpriteRenderer sr = shadow.GetComponent<SpriteRenderer>();
+
+        Color startColor = sr.color;
+        startColor.a = 1f;
+        sr.color = startColor;
+
+        yield return null; // Let it render before fading
+
+        float timeElapsed = 0f;
+
+        while (timeElapsed < shadowFadeDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, timeElapsed / shadowFadeDuration);
+            sr.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            yield return null;
+        }
+
+        Destroy(shadow);
+    }
+
+    private IEnumerator DashCooldown()
+    {
+        yield return new WaitForSeconds(dashCooldown);
+        readyToDash = true;
+        HUD.Instance.DisplayDash(readyToDash);
+    }
 }
