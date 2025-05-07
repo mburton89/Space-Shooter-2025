@@ -9,7 +9,6 @@ public class Ship : MonoBehaviour
     public GameObject explosionPrefab;
     public List<GameObject> powerUpPrefabs;
     public float invincTime;
-    public float dashInvincTime;
     private ParticleSystem thrustParticles;
     private Collider2D col;
 
@@ -45,6 +44,7 @@ public class Ship : MonoBehaviour
     public Transform megaLaserSpawnPoint;
 
     [Header("Dash Settings")]
+    public float dashInvincTime;
     public float dashForce;
     public float dashCooldown;
     public bool readyToDash = true;
