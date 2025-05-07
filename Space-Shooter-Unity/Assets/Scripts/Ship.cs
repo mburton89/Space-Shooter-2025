@@ -41,7 +41,7 @@ public class Ship : MonoBehaviour
     [Header("Dash Settings")]
     public float dashForce;
     public float dashCooldown;
-    public bool readyToDash;
+    public bool readyToDash = true;
     public float shadowFadeDuration = 0.5f;
     public int shadowCount = 3;
     public float spawnDelay = 0.05f;

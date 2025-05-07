@@ -6042,13 +6042,13 @@ MonoBehaviour:
   megaLaserCooldown: 4
   megaLaserPrefab: {fileID: 7512327478004615704, guid: 222ae6a7148e0ea48842d40410d2fb4e, type: 3}
   megaLaserSpawnPoint: {fileID: 352955755}
-  dashForce: 0
-  dashCooldown: 0
+  dashForce: 25
+  dashCooldown: 1
   readyToDash: 1
   shadowFadeDuration: 0.5
   shadowCount: 3
   spawnDelay: 0.05
-  dashShadowPrefab: {fileID: 0}
+  dashShadowPrefab: {fileID: 8660308642826990816, guid: 1c07eb65b193e4f4294e3c9306407dfc, type: 3}
 --- !u!58 &1528520814
 CircleCollider2D:
   m_ObjectHideFlags: 0
