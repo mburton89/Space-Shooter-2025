@@ -26,6 +26,9 @@ public class TrainSpawner : MonoBehaviour
 
     void Start()
     {
+        // find player ship
+        playerShip = FindObjectOfType<PlayerShip>().gameObject;
+
         // spawns head of train
         GameObject head = Instantiate(trainHeadPrefab, transform.position, Quaternion.identity);
         segments.Add(head.transform);

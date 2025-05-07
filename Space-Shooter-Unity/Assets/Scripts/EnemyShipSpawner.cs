@@ -13,6 +13,7 @@ public class EnemyShipSpawner : MonoBehaviour
     public Transform spawnPoint;
     public Transform pivot;
     public List<GameObject> enemyShipPrefabs;
+    public List<GameObject> bossPrefabs;
 
     public GameObject playerShip;
 
@@ -33,13 +34,24 @@ public class EnemyShipSpawner : MonoBehaviour
     {
         int numberOfEnemiesToSpawn = baseNumberOfShips + currentWave - 1;
 
-        for (int i = 0; i < numberOfEnemiesToSpawn; i++)
+        if (currentWave % 10 == 0)
         {
-            int index = Random.Range(0, enemyShipPrefabs.Count);
+            int index = Random.Range(0, bossPrefabs.Count);
             float zRotation = Random.Range(0, 360);
 
             pivot.eulerAngles = new Vector3(0, 0, zRotation);
-            Instantiate(enemyShipPrefabs[index], spawnPoint.position, transform.rotation, null);
+            Instantiate(bossPrefabs[index], spawnPoint.position, transform.rotation, null);
+        } 
+        else 
+        {
+            for (int i = 0; i < numberOfEnemiesToSpawn; i++)
+            {
+                int index = Random.Range(0, enemyShipPrefabs.Count);
+                float zRotation = Random.Range(0, 360);
+
+                pivot.eulerAngles = new Vector3(0, 0, zRotation);
+                Instantiate(enemyShipPrefabs[index], spawnPoint.position, transform.rotation, null);
+            }
         }
     }
 

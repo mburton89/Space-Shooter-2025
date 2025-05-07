@@ -5059,8 +5059,8 @@ MonoBehaviour:
   minePrefab: {fileID: 1665753336957800613, guid: ba4849cd9297fcd46af88207dd2db216, type: 3}
   projectileSpawnPoint: {fileID: 8074507355456132403}
   mineSpawnPoint: {fileID: 7342241512737911797}
-  currentHealth: 4
-  maxHealth: 4
+  currentHealth: 1
+  maxHealth: 1
   acceleration: 3
   currentMovementSpeed: 0
   maxMovementSpeed: 3
