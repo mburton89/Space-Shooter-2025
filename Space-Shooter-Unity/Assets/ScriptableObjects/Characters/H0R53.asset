@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22affb01059c4c94ab0bc020ad2178cc, type: 3}
-  m_Name: Horse Witch
+  m_Name: H0R53
   m_EditorClassIdentifier: 
-  portrait: {fileID: 21300000, guid: 74c50c4eaf22259439e3a5658c3e6117, type: 3}
-  _name: 
-  bio: 
+  portrait: {fileID: 21300000, guid: 8cd212120c5119049a9be32a3df20d15, type: 3}
+  _name: H0R53
+  bio: A bounty hunter looking for 2 guys who lost a bet.
   health: 0
   acceleration: 0
   movementSpeed: 0
