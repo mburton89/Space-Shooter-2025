@@ -8,6 +8,7 @@ public class Ship : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject minePrefab;
     public Transform projectileSpawnPoint;
+    public Transform mineSpawnPoint;
 
     public int currentHealth;
     public int maxHealth;
@@ -18,16 +19,14 @@ public class Ship : MonoBehaviour
     public float projectileSpeed;
 
     public float fireRate;
+    public float deployRate;
 
     private ParticleSystem thrustParticles;
 
     public GameObject explosionPrefab;
 
     public bool readyToShoot;
-
-    public int minesRemaining;
-
-    public List<GameObject> powerUpPrefabs;
+    public bool readyToDeploy;
 
     void Awake()
     {
@@ -48,8 +47,16 @@ public class Ship : MonoBehaviour
         projectile.GetComponent<Rigidbody2D>().AddForce(transform.up * projectileSpeed);
         projectile.GetComponent<Projectile>().GetFired(gameObject);
         Destroy(projectile, 5);
-        StartCoroutine(CoolDown());
+        StartCoroutine(CoolDownBullet());
         SoundManager.Instance.PlayPewSound();
+    }
+
+    public void DeployMine()
+    {
+        GameObject mine = Instantiate(minePrefab, mineSpawnPoint.position, transform.rotation);
+        mine.GetComponent<Mine>().GetDeployed(gameObject);
+        Destroy(mine, 10);
+        StartCoroutine(CoolDownMine());
     }
 
     public void Thrust()
@@ -77,11 +84,10 @@ public class Ship : MonoBehaviour
     {
         GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
         Destroy(explosion, 5);
-        
+
         if (GetComponent<EnemyShip>())
         { 
             EnemyShipSpawner.Instance.CountEnemyShips();
-            SpawnPowerUp();
         }
 
         if (GetComponent<PlayerShip>())
@@ -94,31 +100,16 @@ public class Ship : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator CoolDown()
+    private IEnumerator CoolDownBullet()
     {
         readyToShoot = false;
         yield return new WaitForSeconds(fireRate);
         readyToShoot = true;
     }
-
-    public void SpawnPowerUp()
+    private IEnumerator CoolDownMine()
     {
-      int index = Random.Range(0, powerUpPrefabs.Count);
-    Instantiate(powerUpPrefabs[index],transform.position, transform.rotation, null);
-    }
-
-
-    public void DropMine()
-    {
-        if (minesRemaining > 0)
-        {
-            GameObject mine = Instantiate(minePrefab, transform.position, transform.rotation);
-            mine.GetComponent<Projectile>().GetFired(gameObject);
-            minesRemaining--;
-            if (GetComponent<PlayerShip>())
-            {
-                HUD.Instance.DisplayMineCount(minesRemaining);
-            }
-        }
+        readyToDeploy = false;
+        yield return new WaitForSeconds(deployRate);
+        readyToDeploy = true;
     }
 }
