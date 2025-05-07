@@ -6411,7 +6411,7 @@ GameObject:
   - component: {fileID: 1939194614}
   - component: {fileID: 1939194615}
   m_Layer: 0
-  m_Name: Player Ship
+  m_Name: Player Ship - Tron Horse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6485,8 +6485,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.21960783, g: 1, b: 0.861405, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 90c7db526d107d843849e366af3242e6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6571,8 +6571,8 @@ MonoBehaviour:
   acceleration: 10
   currentMovementSpeed: 0
   maxMovementSpeed: 10
-  projectileSpeed: 1000
   fireRate: 0
+  projectileSpeed: 1000
   readyToShoot: 0
   minesRemaining: 5
   megaLaserReady: 1
