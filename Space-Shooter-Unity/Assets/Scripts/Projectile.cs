@@ -6,7 +6,6 @@ public class Projectile : MonoBehaviour
 {
     public int damageToGive = 1;
     GameObject firingShip;
-    public bool IsMegaLaser;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
