@@ -47,6 +47,7 @@ public class Ship : MonoBehaviour
     public float spawnDelay = 0.05f;
     public GameObject dashShadowPrefab;
 
+
     void Awake()
     {
         thrustParticles = GetComponentInChildren<ParticleSystem>();
@@ -119,13 +120,6 @@ public class Ship : MonoBehaviour
         yield return new WaitForSeconds(fireRate);
         readyToShoot = true;
     }
-
-    public void SpawnPowerUp()
-    {
-      int index = Random.Range(0, powerUpPrefabs.Count);
-    Instantiate(powerUpPrefabs[index],transform.position, transform.rotation, null);
-    }
-
 
     public void DropMine()
     {
