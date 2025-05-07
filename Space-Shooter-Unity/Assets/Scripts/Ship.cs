@@ -50,7 +50,7 @@ public class Ship : MonoBehaviour
         Destroy(projectile, 5);
         StartCoroutine(CoolDown());
         //SoundManager.Instance.PlayPewSound();
-        SoundsManager.Instance.PlayVariedSFX(SoundsManager.Instance.source2);
+        SoundsManager.Instance.PlayVariedSFX(SoundsManager.Instance.source21);
     }
 
     public void Thrust()
@@ -72,6 +72,8 @@ public class Ship : MonoBehaviour
         { 
             Explode();
         }
+        SoundsManager.Instance.PlaySFX(SoundsManager.Instance.source3);
+        SoundsManager.Instance.PlaySFX(SoundsManager.Instance.source4);
     }
 
     public void Explode()
@@ -82,16 +84,17 @@ public class Ship : MonoBehaviour
         if (GetComponent<EnemyShip>())
         { 
             EnemyShipSpawner.Instance.CountEnemyShips();
-            SpawnPowerUp();
+            //SpawnPowerUp();
         }
 
         if (GetComponent<PlayerShip>())
         {
+            SoundsManager.Instance.PlaySFX(SoundsManager.Instance.source10);
             GameManager.Instance.GameOver();
         }
 
         //SoundManager.Instance.PlayExplosionSound();
-
+        SoundsManager.Instance.PlaySFX(SoundsManager.Instance.source7);
         Destroy(gameObject);
     }
 
@@ -102,11 +105,11 @@ public class Ship : MonoBehaviour
         readyToShoot = true;
     }
 
-    public void SpawnPowerUp()
-    {
-      int index = Random.Range(0, powerUpPrefabs.Count);
-    Instantiate(powerUpPrefabs[index],transform.position, transform.rotation, null);
-    }
+    //public void SpawnPowerUp()
+    //{
+    //  int index = Random.Range(0, powerUpPrefabs.Count);
+    //Instantiate(powerUpPrefabs[index],transform.position, transform.rotation, null);
+    //}
 
 
     public void DropMine()

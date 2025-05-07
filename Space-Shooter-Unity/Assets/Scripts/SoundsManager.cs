@@ -13,6 +13,29 @@ public class SoundsManager : MonoBehaviour
     public AudioSource source3;
     public AudioSource source4;
     public AudioSource source5;
+    public AudioSource source6;
+    public AudioSource source7;
+    public AudioSource source8;
+    public AudioSource source9;
+    public AudioSource source10;    
+    public AudioSource source11;
+    public AudioSource source12;
+    public AudioSource source13;
+    public AudioSource source14;
+    public AudioSource source15;
+    public AudioSource source16;
+    public AudioSource source17;
+    public AudioSource source18;
+    public AudioSource source19;
+    public AudioSource source20;
+    public AudioSource source21;
+    public AudioSource source22;
+    public AudioSource source23;
+    public AudioSource source24;
+    public AudioSource source25;
+    public AudioSource source26;
+    public AudioSource source27;
+    public AudioSource source28;
 
     //Volume Values
     public float gameVolume;
@@ -43,7 +66,8 @@ public class SoundsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayBGM(source1);
+        //PlaySFX(source11);
+        PlayBGM(source18);
     }
 
     // Update is called once per frame

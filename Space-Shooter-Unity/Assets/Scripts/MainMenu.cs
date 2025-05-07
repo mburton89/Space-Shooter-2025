@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
     void HandleStartButtonClicked()
     {
         SceneManager.LoadScene(1);
+        SoundsManager.Instance.PlayBGM(SoundsManager.Instance.source17);
     }
 
     void HandleExitButtonPressed()

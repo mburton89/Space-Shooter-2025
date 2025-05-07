@@ -1107,19 +1107,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 891232741047041287, guid: d34a7e20a5d84da4aa72cb2b7cb7e9cb, type: 3}
       propertyPath: m_Name
-      value: Audio Source (5)
+      value: Dash
       objectReference: {fileID: 0}
     - target: {fileID: 1532276713254759015, guid: d34a7e20a5d84da4aa72cb2b7cb7e9cb, type: 3}
       propertyPath: m_Name
-      value: Audio Source (3)
+      value: Damage
       objectReference: {fileID: 0}
     - target: {fileID: 1555200396799510511, guid: d34a7e20a5d84da4aa72cb2b7cb7e9cb, type: 3}
       propertyPath: m_Name
-      value: Audio Source (4)
+      value: Damage Grunt
       objectReference: {fileID: 0}
     - target: {fileID: 1908328550680710107, guid: d34a7e20a5d84da4aa72cb2b7cb7e9cb, type: 3}
       propertyPath: m_Name
-      value: Audio Source (1)
+      value: Bite
       objectReference: {fileID: 0}
     - target: {fileID: 2355111453445411215, guid: d34a7e20a5d84da4aa72cb2b7cb7e9cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1175,7 +1175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5148973163852797895, guid: d34a7e20a5d84da4aa72cb2b7cb7e9cb, type: 3}
       propertyPath: m_Name
-      value: Audio Source (2)
+      value: Crunch
       objectReference: {fileID: 0}
     - target: {fileID: 6745965639176353259, guid: d34a7e20a5d84da4aa72cb2b7cb7e9cb, type: 3}
       propertyPath: source2
