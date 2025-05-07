@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-    [Header(" ===== GameObjects/Prefabs ===== ")]
+    [Header(" ===== General ===== ")]
     public Rigidbody2D rb;
     public GameObject projectilePrefab;
-    public GameObject minePrefab;
     public Transform projectileSpawnPoint;
     public GameObject explosionPrefab;
     public List<GameObject> powerUpPrefabs;
@@ -18,10 +17,6 @@ public class Ship : MonoBehaviour
     public int maxHealth;
 
     [Header(" ===== Movement Settings ===== ")]
-    public GameObject dashShadowPrefab;
-    private ParticleSystem thrustParticles;
-    public GameObject explosionPrefab;
-
     public float acceleration;
     public float currentMovementSpeed;
     public float maxMovementSpeed;
@@ -31,7 +26,10 @@ public class Ship : MonoBehaviour
     public float fireRate;
     public float projectileSpeed;
     public bool readyToShoot;
+
+    [Header("- - - Mines - - -")]
     public int minesRemaining;
+    public GameObject minePrefab;
 
     [Header("- - - MegaLaser Settigns - - - ")]
     public bool megaLaserReady;
@@ -47,6 +45,7 @@ public class Ship : MonoBehaviour
     public float shadowFadeDuration = 0.5f;
     public int shadowCount = 3;
     public float spawnDelay = 0.05f;
+    public GameObject dashShadowPrefab;
 
     void Awake()
     {
