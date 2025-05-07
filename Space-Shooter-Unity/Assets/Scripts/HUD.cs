@@ -9,8 +9,10 @@ public class HUD : MonoBehaviour
     public static HUD Instance;
 
     public Image healthBarFill;
+    public Image megaLaserBoxFill;
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI bestText;
+    public TextMeshProUGUI minesText;
 
     private void Awake()
     {
@@ -32,5 +34,15 @@ public class HUD : MonoBehaviour
     public void DisplayBest(int bestWave)
     {
         bestText.SetText("Best " + bestWave);
+    }
+
+    public void DisplayMineCount(int minesRemaining)
+    {
+        minesText.SetText("Mines: " + minesRemaining);
+    }
+
+    public void DisplayMLaser(bool isReady)
+    {
+        megaLaserBoxFill.enabled = isReady;
     }
 }
