@@ -7,12 +7,14 @@ public class Ship : MonoBehaviour
     [Header(" ===== General ===== ")]
     public Rigidbody2D rb;
     public GameObject projectilePrefab;
+    public GameObject minePrefab;
     public Transform projectileSpawnPoint;
     public GameObject explosionPrefab;
     public List<GameObject> powerUpPrefabs;
     public float invincTime;
     private ParticleSystem thrustParticles;
     private Collider2D col;
+    public Transform mineSpawnPoint;
 
     [Header(" ===== Health Settings ===== ")]
     public int currentHealth;
@@ -28,9 +30,11 @@ public class Ship : MonoBehaviour
     public float fireRate;
     public float projectileSpeed;
     public bool readyToShoot;
+    public bool readyToDeploy;
 
     [Header("- - - Mines - - -")]
     public int minesRemaining;
+    public float deployRate;
     public GameObject minePrefab;
 
     [Header("- - - MegaLaser Settigns - - - ")]
@@ -70,8 +74,23 @@ public class Ship : MonoBehaviour
         projectile.GetComponent<Rigidbody2D>().AddForce(transform.up * projectileSpeed);
         projectile.GetComponent<Projectile>().GetFired(gameObject);
         Destroy(projectile, 5);
-        StartCoroutine(CoolDown());
+        StartCoroutine(CoolDownBullet());
         SoundManager.Instance.PlayPewSound();
+    }
+
+    public void DeployMine()
+    {
+        GameObject mine = Instantiate(minePrefab, mineSpawnPoint.position, transform.rotation);
+        mine.GetComponent<Mine>().GetDeployed(gameObject);
+        Destroy(mine, 10);
+        StartCoroutine(CoolDownMine());
+    }
+
+    private IEnumerator CoolDownMine()
+    {
+        readyToDeploy = false;
+        yield return new WaitForSeconds(deployRate);
+        readyToDeploy = true;
     }
 
     public void Thrust()
@@ -118,7 +137,7 @@ public class Ship : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator CoolDown()
+    private IEnumerator CoolDownBullet()
     {
         readyToShoot = false;
         yield return new WaitForSeconds(fireRate);

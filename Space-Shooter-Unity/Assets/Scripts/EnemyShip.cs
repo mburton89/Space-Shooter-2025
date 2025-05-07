@@ -6,6 +6,7 @@ public class EnemyShip : Ship
 {
     Transform target;
     public bool isShooter;
+    public bool isMiner; // I need a better name for this
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,11 @@ public class EnemyShip : Ship
         if (isShooter && target != null && readyToShoot)
         {
             FireProjectile();
+        }
+
+        if (isMiner && target != null && readyToDeploy)
+        {
+            DeployMine();
         }
     }
 
