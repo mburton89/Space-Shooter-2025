@@ -9,6 +9,7 @@ public class Ship : MonoBehaviour
     public GameObject explosionPrefab;
     public List<GameObject> powerUpPrefabs;
     public float invincTime;
+    public float dashInvincTime;
     private ParticleSystem thrustParticles;
     private Collider2D col;
 
@@ -107,6 +108,7 @@ public class Ship : MonoBehaviour
         if (GetComponent<PlayerShip>())
         {
             HUD.Instance.DisplayHealth(currentHealth, maxHealth);
+            StartCoroutine(Invincibility());
         }
 
         if (currentHealth <= 0)
@@ -214,7 +216,7 @@ public class Ship : MonoBehaviour
 
             rb.velocity = direction * dashForce;
 
-            StartCoroutine(Invincibility());
+            StartCoroutine(DashInvincibility());
             StartCoroutine(DashCooldown());
             StartCoroutine(SpawnDashShadows(direction));
         }
@@ -277,6 +279,15 @@ public class Ship : MonoBehaviour
         //Debug.Log("Invincibility started");
         col.enabled = false;
         yield return new WaitForSeconds(invincTime);
+        col.enabled = true;
+        //Debug.Log("Invincibility ended");
+    }
+
+    private IEnumerator DashInvincibility()
+    {
+        //Debug.Log("Invincibility started");
+        col.enabled = false;
+        yield return new WaitForSeconds(dashInvincTime);
         col.enabled = true;
         //Debug.Log("Invincibility ended");
     }
