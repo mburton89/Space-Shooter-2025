@@ -12,6 +12,10 @@ public class CurrentCharacterInfo : MonoBehaviour
     public void SelectCharacter(int i)
     {
         curChar = i < charactersList.Count ? charactersList[i] : null;
+        if (curChar != null)
+        {
+            SelectGameplayCharacter();
+        }
         Debug.Log(curChar);
     }
 
@@ -20,7 +24,7 @@ public class CurrentCharacterInfo : MonoBehaviour
         return curChar;
     }
 
-    public void SelectCharacter()
+    public void SelectGameplayCharacter()
     {
         selectedChar.SetCharacter(curChar);
     }
