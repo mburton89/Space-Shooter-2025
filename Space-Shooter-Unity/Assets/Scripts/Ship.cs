@@ -39,7 +39,7 @@ public class Ship : MonoBehaviour
     [Header("- - - MegaLaser Settigns - - - ")]
     public bool megaLaserReady;
     public float megaLaserDuration;
-    public float megaLaserCooldown;
+    //public float megaLaserCooldown;
     public GameObject megaLaserPrefab;
     public Transform megaLaserSpawnPoint;
 

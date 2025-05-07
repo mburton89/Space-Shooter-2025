@@ -7429,6 +7429,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1900412987}
+  - {fileID: 2107078513}
   - {fileID: 807351692}
   - {fileID: 340589632}
   m_Father: {fileID: 0}
@@ -7483,7 +7484,7 @@ MonoBehaviour:
   rb: {fileID: 1939194611}
   explosionPrefab: {fileID: 5158381372349960605, guid: 0de221d19e6e79d4f94c017d93cc45c4, type: 3}
   powerUpPrefabs: []
-  invincTime: 0
+  invincTime: 1
   currentHealth: 4
   maxHealth: 4
   acceleration: 10
@@ -7495,22 +7496,21 @@ MonoBehaviour:
   projectileSpeed: 1000
   readyToShoot: 0
   readyToDeploy: 0
-  minesRemaining: 0
+  minesRemaining: 5
   deployRate: 0
-  mineSpawnPoint: {fileID: 0}
+  mineSpawnPoint: {fileID: 340589632}
   minePrefab: {fileID: 1665753336957800613, guid: ba4849cd9297fcd46af88207dd2db216, type: 3}
-  megaLaserReady: 0
-  megaLaserDuration: 0
-  megaLaserCooldown: 0
-  megaLaserPrefab: {fileID: 0}
-  megaLaserSpawnPoint: {fileID: 0}
-  dashForce: 0
-  dashCooldown: 0
+  megaLaserReady: 1
+  megaLaserDuration: 1
+  megaLaserPrefab: {fileID: 7512327478004615704, guid: 222ae6a7148e0ea48842d40410d2fb4e, type: 3}
+  megaLaserSpawnPoint: {fileID: 2107078513}
+  dashForce: 25
+  dashCooldown: 1
   readyToDash: 1
   shadowFadeDuration: 0.5
   shadowCount: 3
   spawnDelay: 0.05
-  dashShadowPrefab: {fileID: 0}
+  dashShadowPrefab: {fileID: 8660308642826990816, guid: 1c07eb65b193e4f4294e3c9306407dfc, type: 3}
 --- !u!1 &1986330382
 GameObject:
   m_ObjectHideFlags: 0
@@ -7595,6 +7595,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2107078512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2107078513}
+  m_Layer: 0
+  m_Name: Mega Laser Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2107078513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107078512}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1939194613}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3277458786437503354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7656,67 +7687,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4a19d066244892478a3f99c2124ff43, type: 3}
---- !u!1001 &8160813325906910905
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2630836631656281903, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: playerShip
-      value: 
-      objectReference: {fileID: 1939194610}
-    - target: {fileID: 6605558862258837749, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: m_Name
-      value: Train Spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936706649248072334, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936706649248072334, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936706649248072334, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936706649248072334, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936706649248072334, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936706649248072334, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936706649248072334, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936706649248072334, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936706649248072334, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936706649248072334, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b6c95881a0c26e844b081515a522ca7b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -7729,7 +7699,6 @@ SceneRoots:
   - {fileID: 749193189}
   - {fileID: 1939194613}
   - {fileID: 3277458786437503354}
-  - {fileID: 8160813325906910905}
   - {fileID: 1552668036}
   - {fileID: 102604865}
   - {fileID: 1986330384}
