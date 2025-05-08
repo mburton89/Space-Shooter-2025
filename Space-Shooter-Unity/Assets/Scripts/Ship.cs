@@ -163,8 +163,8 @@ public class Ship : MonoBehaviour
     {
         if (megaLaserReady)
         {
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            rb.velocity = Vector2.zero;
+            //Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            //rb.velocity = Vector2.zero;
             GameObject laser = Instantiate(megaLaserPrefab, megaLaserSpawnPoint.position, megaLaserSpawnPoint.rotation, megaLaserSpawnPoint);
 
             //Use these two for a powerup recharging laser
@@ -173,7 +173,7 @@ public class Ship : MonoBehaviour
 
             //StartCoroutine(MegaLaserCooldown());  //Use for a cooldown laser
 
-            StartCoroutine(MovementCooldown());
+            //StartCoroutine(MovementCooldown());
             Destroy(laser, megaLaserDuration);
         }
     }

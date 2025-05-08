@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
             }
 
             ship.TakeDamage(damageToGive);
-            Destroy(gameObject);
+            //Destroy(gameObject);
             return;
         }
 
@@ -43,7 +43,10 @@ public class Projectile : MonoBehaviour
                 spawner.RegisterHit();
             }
 
-            Destroy(gameObject);
+            if (!IsMegaLaser)
+            {
+                Destroy(gameObject);
+            }
             return;
         }
     }
