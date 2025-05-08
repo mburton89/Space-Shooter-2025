@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 234634216225367445}
   - component: {fileID: 8980182407483820277}
   - component: {fileID: 7976208882798943579}
+  - component: {fileID: 1752742021943440845}
   m_Layer: 0
   m_Name: Bleacher
   m_TagString: Untagged
@@ -176,3 +177,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceForce: 500
+--- !u!114 &1752742021943440845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369549109853140106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ac5885552293747a3a07e66ba07c78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToScatter: {fileID: 116954164202915009, guid: 82d4aed252df1a541b1fef6ec085f4c5, type: 3}
+  numberToScatter: 11
+  maxAttemptsPerObject: 100
