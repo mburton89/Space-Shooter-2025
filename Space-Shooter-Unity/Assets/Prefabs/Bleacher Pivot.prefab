@@ -190,5 +190,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToScatter: {fileID: 116954164202915009, guid: 82d4aed252df1a541b1fef6ec085f4c5, type: 3}
-  numberToScatter: 11
+  numberToScatter: 7
   maxAttemptsPerObject: 100

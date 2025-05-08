@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5133816011002204292}
   - component: {fileID: 7818420457753993968}
   - component: {fileID: 992828295868315002}
+  - component: {fileID: 7235023179658285016}
   m_Layer: 0
   m_Name: Crowd Fan
   m_TagString: Untagged
@@ -161,3 +162,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7235023179658285016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116954164202915009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bb9c2393d315848b65216bfe2230ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationRadius: 10
+  checkInterval: 0.5
