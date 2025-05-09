@@ -221,14 +221,7 @@ public class Ship : MonoBehaviour
             StartCoroutine(SpawnDashShadows(direction));
         }
     }
-    /*
-    private void RotateShadow(Vector2 direction)
-    {
-        float angle = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
 
-        shadow.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-    }
-    */
     private IEnumerator DashCooldown()
     {
         yield return new WaitForSeconds(dashCooldown);
