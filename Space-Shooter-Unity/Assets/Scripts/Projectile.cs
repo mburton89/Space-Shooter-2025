@@ -26,8 +26,6 @@ public class Projectile : MonoBehaviour
                 Destroy(gameObject);
             }
 
-            ship.TakeDamage(damageToGive);
-            Destroy(gameObject);
             return;
         }
 
