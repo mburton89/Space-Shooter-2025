@@ -708,6 +708,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bleacher Parent
       objectReference: {fileID: 0}
+    - target: {fileID: 5427873663568676324, guid: 9a3be2c2c564fc74d8d7c901e95ae105, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7251284783128666085, guid: 9a3be2c2c564fc74d8d7c901e95ae105, type: 3}
       propertyPath: m_IsActive
       value: 1

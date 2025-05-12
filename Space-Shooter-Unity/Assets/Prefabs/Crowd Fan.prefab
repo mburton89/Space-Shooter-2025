@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3392638042611852156}
   - component: {fileID: 6354782410967193700}
   - component: {fileID: 5133816011002204292}
-  - component: {fileID: 7818420457753993968}
   - component: {fileID: 992828295868315002}
   - component: {fileID: 7235023179658285016}
   m_Layer: 0
@@ -104,19 +103,6 @@ MonoBehaviour:
   bobAmount: 0.5
   driftRadius: 0.5
   driftSpeed: 0.5
---- !u!114 &7818420457753993968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116954164202915009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f330066b786474a911fd39602ca84f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleEffectPrefab: {fileID: 3099205241729200387, guid: 3ff80e2d5f7b797428b11afb8616efc7, type: 3}
 --- !u!61 &992828295868315002
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,7 +110,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116954164202915009}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -169,7 +155,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116954164202915009}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21bb9c2393d315848b65216bfe2230ef, type: 3}
   m_Name: 
