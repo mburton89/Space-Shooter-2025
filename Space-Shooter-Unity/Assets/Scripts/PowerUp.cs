@@ -32,6 +32,12 @@ public class PowerUp : MonoBehaviour
         {
             player = collision.GetComponent<PlayerShip>();  // Get the PlayerShip reference from the player
             PowerUpEffect();
+
+            if (SoundsManager.Instance != null)
+            {
+                SoundsManager.Instance.PlayVariedSFX(SoundsManager.Instance.source12);
+            }
+
             Destroy(gameObject); 
         }
     }

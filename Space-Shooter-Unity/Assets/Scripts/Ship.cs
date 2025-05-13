@@ -75,7 +75,13 @@ public class Ship : MonoBehaviour
         projectile.GetComponent<Projectile>().GetFired(gameObject);
         Destroy(projectile, 5);
         StartCoroutine(CoolDownBullet());
-        SoundManager.Instance.PlayPewSound();
+        //SoundManager.Instance.PlayPewSound();
+
+        if (SoundsManager.Instance != null)
+        {
+            SoundsManager.Instance.PlayVariedSFX(SoundsManager.Instance.source21);
+        }
+
     }
 
     public void DeployMine()
@@ -111,6 +117,11 @@ public class Ship : MonoBehaviour
             StartCoroutine(Invincibility());
         }
 
+        if (SoundsManager.Instance != null)
+        {
+            SoundsManager.Instance.PlayVariedSFX(SoundsManager.Instance.source3);
+        }
+
         if (currentHealth <= 0)
         {
             Explode();
@@ -133,7 +144,12 @@ public class Ship : MonoBehaviour
             GameManager.Instance.GameOver();
         }
 
-        SoundManager.Instance.PlayExplosionSound();
+        //SoundManager.Instance.PlayExplosionSound();
+
+        if (SoundsManager.Instance != null)
+        {
+            SoundsManager.Instance.PlayVariedSFX(SoundsManager.Instance.source7);
+        }
 
         Destroy(gameObject);
     }
@@ -156,6 +172,11 @@ public class Ship : MonoBehaviour
             {
                 HUD.Instance.DisplayMineCount(minesRemaining);
             }
+
+            if (SoundsManager.Instance != null)
+            {
+                SoundsManager.Instance.PlayVariedSFX(SoundsManager.Instance.source10);
+            }
         }
     }
 
@@ -175,6 +196,11 @@ public class Ship : MonoBehaviour
 
             //StartCoroutine(MovementCooldown());
             Destroy(laser, megaLaserDuration);
+
+            if (SoundsManager.Instance != null)
+            {
+                SoundsManager.Instance.PlayVariedSFX(SoundsManager.Instance.source19);
+            }
         }
     }
 
@@ -219,6 +245,11 @@ public class Ship : MonoBehaviour
             StartCoroutine(DashInvincibility());
             StartCoroutine(DashCooldown());
             StartCoroutine(SpawnDashShadows(direction));
+
+            if (SoundsManager.Instance != null)
+            {
+                SoundsManager.Instance.PlayVariedSFX(SoundsManager.Instance.source5);
+            }
         }
     }
     /*

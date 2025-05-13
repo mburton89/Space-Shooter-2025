@@ -18,7 +18,7 @@ public class ZRotationSpawner : MonoBehaviour
         while (currentRotation < 360f)
         {
             Quaternion rotation = Quaternion.Euler(0f, 0f, currentRotation);
-            Instantiate(prefab, spawnPosition, rotation);
+            Instantiate(prefab, spawnPosition, rotation, transform);
             currentRotation += rotationStep;
         }
     }

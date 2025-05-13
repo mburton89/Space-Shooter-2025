@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SoundsManager : MonoBehaviour
 {
@@ -49,6 +50,9 @@ public class SoundsManager : MonoBehaviour
     public AudioSource currentSFX;
     public AudioSource currentBGM;
 
+    public AudioSource gameplayMusic;
+    public AudioSource bossMusic;
+
 
     private void Awake()
     {
@@ -67,7 +71,7 @@ public class SoundsManager : MonoBehaviour
     void Start()
     {
         //PlaySFX(source11);
-        PlayBGM(source18);
+        //PlayBGM(source18);
     }
 
     // Update is called once per frame
@@ -117,5 +121,11 @@ public class SoundsManager : MonoBehaviour
         float tempPitch = Random.Range(minPitch, maxPitch);
         currentSFX.pitch = tempPitch;
         currentSFX.Play();
+    }
+
+    public void PlayBossMusic()
+    {
+        gameplayMusic.DOFade(0, 1);
+        bossMusic.Play();
     }
 }
