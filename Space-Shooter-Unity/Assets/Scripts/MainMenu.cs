@@ -7,16 +7,27 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public Button startButton;
-    public Button exitButton;
+    public Button goButton;
+
+    public GameObject mainContainer;
+    public GameObject characterContainer;
 
     void Start()
     {
-        startButton.onClick.AddListener(HandleStartButtonClicked);
+        startButton.onClick.AddListener(HandleStartPressed);
+        goButton.onClick.AddListener(HandleGoButtonClicked);
     }
 
-    void HandleStartButtonClicked()
+    void HandleStartPressed()
+    { 
+        mainContainer.SetActive(false);
+        characterContainer.SetActive(true);
+    }
+
+    void HandleGoButtonClicked()
     {
         SceneManager.LoadScene(1);
+        SoundsManager.Instance.PlayBGM(SoundsManager.Instance.source17);
     }
 
     void HandleExitButtonPressed()

@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+    [Header(" ===== General ===== ")]
+    public Transform spawnPoint;
+    private PlayerShip player;
+
+    [Header(" ===== Health ===== ")]
     public bool restoreHealth;
     public int restoreHealthAmount;
+
+    [Header(" ===== Speed ===== ")]
     public bool increaseSpeed;
     public bool revertSpeed;
     public int powerUpTimer;
-    public Transform spawnPoint;
     private float originalSpeed;
     private Coroutine revertCoroutine;
-
     public GameObject revertSpeedPrefab;
-    private PlayerShip player;
+
+    [Header(" ===== MegaLaser ===== ")]
+    public bool megaLaserRecharge;
+    
 
     //public List<GameObject> enemyShipPrefabs;
 
@@ -24,6 +32,12 @@ public class PowerUp : MonoBehaviour
         {
             player = collision.GetComponent<PlayerShip>();  // Get the PlayerShip reference from the player
             PowerUpEffect();
+
+            if (SoundsManager.Instance != null)
+            {
+                SoundsManager.Instance.PlayVariedSFX(SoundsManager.Instance.source12);
+            }
+
             Destroy(gameObject); 
         }
     }
@@ -63,6 +77,12 @@ public class PowerUp : MonoBehaviour
 
         GameObject revertSpeedPre = Instantiate(revertSpeedPrefab);
       }
+
+        if (megaLaserRecharge)
+        {
+            player.megaLaserReady = true;
+            HUD.Instance.DisplayMLaser(player.megaLaserReady);
+        }
     }
     private IEnumerator RevertSpeedAfterDelay()
     {

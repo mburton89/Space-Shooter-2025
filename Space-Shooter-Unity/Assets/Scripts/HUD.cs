@@ -10,6 +10,7 @@ public class HUD : MonoBehaviour
 
     public Image healthBarFill;
     public Image megaLaserBoxFill;
+    public Image dashBoxFill;
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI bestText;
     public TextMeshProUGUI minesText;
@@ -24,6 +25,11 @@ public class HUD : MonoBehaviour
         float healthAmount = (float)currentHealth / (float)maxHealth;
 
         healthBarFill.fillAmount = healthAmount;
+    }
+
+    public void DisplayDash(bool isDashReady)
+    {
+        dashBoxFill.enabled = isDashReady;
     }
 
     public void DisplayWave(int currentWave)

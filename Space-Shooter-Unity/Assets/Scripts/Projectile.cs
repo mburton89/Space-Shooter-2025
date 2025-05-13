@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public int damageToGive = 1;
     GameObject firingShip;
+    public bool IsMegaLaser;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,8 +19,15 @@ public class Projectile : MonoBehaviour
         Ship ship = collision.GetComponent<Ship>();
         if (ship != null)
         {
+            collision.GetComponent<Ship>().TakeDamage(damageToGive);
+
+            if (!IsMegaLaser)
+            {
+                Destroy(gameObject);
+            }
+
             ship.TakeDamage(damageToGive);
-            Destroy(gameObject);
+            //Destroy(gameObject);
             return;
         }
 
@@ -35,7 +43,10 @@ public class Projectile : MonoBehaviour
                 spawner.RegisterHit();
             }
 
-            Destroy(gameObject);
+            if (!IsMegaLaser)
+            {
+                Destroy(gameObject);
+            }
             return;
         }
     }
@@ -44,6 +55,4 @@ public class Projectile : MonoBehaviour
     { 
         firingShip = shipThatFired;
     }
-
-
 }

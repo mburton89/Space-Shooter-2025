@@ -24,7 +24,7 @@ public class MainMenuSequencer : MonoBehaviour
         rightHorseStartPos = rightHorse.position;
         titleStartScale = title.localScale;
 
-        StartCoroutine(LoopIntroSequence());
+        StartCoroutine(IntroSequence());
     }
 
     private IEnumerator LoopIntroSequence()

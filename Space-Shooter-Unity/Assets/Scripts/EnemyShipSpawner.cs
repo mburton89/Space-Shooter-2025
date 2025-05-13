@@ -43,6 +43,8 @@ public class EnemyShipSpawner : MonoBehaviour
 
             pivot.eulerAngles = new Vector3(0, 0, zRotation);
             Instantiate(bossPrefabs[index], spawnPoint.position, transform.rotation, null);
+
+            SoundsManager.Instance.PlayBossMusic();
         } 
         else 
         {

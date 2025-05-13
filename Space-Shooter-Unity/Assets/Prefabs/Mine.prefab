@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5072649159261693372}
   - component: {fileID: 4580714768588212000}
-  - component: {fileID: 2073005621015599680}
   - component: {fileID: -4168580396613859467}
   - component: {fileID: 7903762577244423080}
+  - component: {fileID: 5861075520813652067}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Untagged
@@ -87,20 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2073005621015599680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665753336957800613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d80de5d16bfe2b54480358392d8f1419, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageToGive: 100
-  mineExplosionPrefab: {fileID: 759757964498638166, guid: 493522d5018febe41ae5b9eca15143a2, type: 3}
 --- !u!58 &-4168580396613859467
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -163,3 +149,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5861075520813652067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665753336957800613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb3912ac94c37b4a837f2182ef28e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageToGive: 3
+  IsMegaLaser: 0
